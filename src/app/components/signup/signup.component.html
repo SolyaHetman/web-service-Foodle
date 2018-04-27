@@ -1,0 +1,12 @@
+<navbar></navbar>
+<section class="section-signin mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-4 mx-auto">
+                <input type="email" [(ngModel)]="register.email" placeholder="email">
+                <input type="password" [(ngModel)]="register.password" placeholder="password">
+                <button type="submit" class="btn mx-auto d-block mt-4 " (click)="registerUser()">Зареєструватись</button>
+            </div>
+        </div>
+    </div>
+</section>

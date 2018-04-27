@@ -1,0 +1,25 @@
+.section-signin form input,
+.section-signin form select {
+    border-left: unset;
+    border-right: unset;
+    border-top: unset;
+    border-color: #333;
+    border-radius: unset;
+    max-width: 87%;
+}
+
+.section-signin form label span {
+    color: red;
+}
+
+.section-signin form input.form-control:focus {
+    box-shadow: unset !important;
+    border-color: unset !important;
+}
+
+.section-signin form button {
+    border: 1px #333 solid;
+    border-radius: 30px;
+    background-color: unset;
+    padding: 10px 40px 10px 40px;
+}

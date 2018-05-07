@@ -9,7 +9,7 @@
         </div>
     </div>
 </section> -->
-<navbar></navbar>
+<!-- <navbar></navbar> -->
 <section class="section-signin mt-5">
     <div class="container">
         <div class="row">
@@ -125,9 +125,22 @@
                             Allergy is required.
                         </p>
                     </div>
+                    <!-- Кухня -->
+                    <div class="form-group d-flex align-items-end justify-content-between">
+                        <label class="mb-0" for="сuisine">Кухня: </label>
+                        <select class="form-control" formControlName="cuisine">
+                            <option value="">Оберіть кухню</option>
+                            <option *ngFor="let cuisine of cuisines" [value]="cuisine">{{ cuisine.name }}</option>
+                        </select>
+                    </div>
+                    <!-- кухня errors showcase -->
+                    <div *ngIf="cuisine.invalid && (cuisine.dirty || isSubmitted)" class="form-group text-danger">
+                        <p *ngIf="cuisine.errors.required">
+                            Cuisine is required.
+                        </p>
+                    </div>
                     <button type="submit" class="btn mx-auto d-block mt-4 " (click)="registerUser()">Зареєструватись</button>
                 </form>
-                <flash-messages></flash-messages>
             </div>
         </div>
     </div>

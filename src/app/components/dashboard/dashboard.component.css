@@ -1,0 +1,418 @@
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    font-weight: 500 !important;
+}
+
+.navbar-c {
+    background-color: black;
+    padding-bottom: 4px;
+    padding-top: 4px;
+}
+
+.col-nav-c-logo {
+    width: 60px;
+}
+
+.col-nav-c-username {
+    width: 140px;
+}
+
+.col-nav-c-username-small {
+    width: 20px;
+}
+
+.username-navbar {
+    margin-right: 10px;
+}
+
+.logo-c {
+    width: 100px;
+    height: 50px;
+}
+
+.nav-username {
+    text-transform: uppercase;
+    color: #D9D9D9;
+}
+
+.nav-username:hover {
+    text-decoration: none;
+    color: #D9D9D9;
+}
+
+.dropdown-custom {
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+    border: 0px solid black;
+}
+
+.list-custom:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #D9D9D9;
+}
+
+.list-custom {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #D9D9D9;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.dropdown-menu-center {
+    left: 50% !important;
+    right: auto !important;
+    transform: translate(-50%, 0) !important;
+}
+
+.dropdown-menu-small {
+    left: -180% !important;
+    right: auto !important;
+    transform: translate(-50%, 0) !important;
+}
+
+.list-custom-1 {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #D9D9D9;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.topped-margin {
+    height: 60px;
+}
+
+.main-content {
+    margin-top: 20px;
+}
+
+.strilka-left {
+    margin-left: -15px;
+}
+
+.strilka-right {
+    margin-right: -15px;
+}
+
+.scale-allow {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-left: 5px;
+}
+
+#carouselExampleControls2 .carousel-inner {
+    margin-bottom: -35px !important;
+}
+
+.scale-allow-last {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-left: 5px;
+    margin-bottom: -60px;
+}
+
+.bigletters {
+    text-transform: uppercase;
+}
+
+.lineunder {
+    border: none;
+    background-color: black;
+    color: black;
+    height: 2px;
+    width: 60px;
+}
+
+.carrot-block {
+    margin-top: 10px;
+}
+
+.otstup {
+    height: 10px;
+}
+
+.prod-rect {
+    background-color: black;
+    padding-left: 2px;
+    padding-right: 2px;
+    padding-top: 9px;
+    margin-top: -10px;
+    text-transform: uppercase;
+    color: #8F8F8F;
+    width: -moz-max-content;
+    width: -webkit-max-content;
+    width: max-content;
+    font-size: 7px;
+    box-shadow: 0 4px 50px -2px rgba(0, 0, 0, 0.8);
+}
+
+.produces img {
+    width: 35px;
+    height: 35px;
+    box-shadow: 0 10px 35px -3px rgba(0, 0, 0, 0.8);
+}
+
+.choosed-dishes {
+    margin-top: 170px;
+}
+
+.fa-minus-circle {
+    margin-left: 30px;
+}
+
+.upsalad {
+    margin-top: 10px;
+}
+
+.minuses-block {
+    margin-top: 12px;
+    margin-left: -20px;
+}
+
+.days-menu {
+    width: 98%;
+}
+
+.snidanok {
+    margin-top: 35px;
+    margin-bottom: 0px;
+    font-size: 18px;
+}
+
+.obid {
+    margin-top: -5px;
+    margin-bottom: 0px;
+    font-size: 18px;
+}
+
+.vecherya {
+    margin-top: -5px;
+    margin-bottom: 0px;
+    font-size: 18px;
+}
+
+.margin-sportmenu {
+    margin-left: 10px;
+}
+
+.last-sportmenu {
+    margin-left: -5px;
+    padding-left: 0 !important;
+    margin-right: 15px;
+}
+
+.salat-na-snidanok {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 800;
+    padding-right: 0 !important;
+    padding-left: 10px !important;
+    padding-top: 7px;
+}
+
+.left-col-sportmenu {
+    margin-right: -5px !important;
+}
+
+.sportmenu-otstup {
+    height: 103px;
+}
+
+.sportmenu-insider {
+    height: 180px;
+    font-size: 8px;
+}
+
+.sportmenu-stars {
+    font-size: 14px;
+    padding-right: 0 !important;
+    margin: 0 !important;
+    padding-left: 0 !important;
+}
+
+.sportmenu-otstup-stars {
+    height: 118px;
+}
+
+.sportmenu-ingridients {
+    position: relative;
+    z-index: 2;
+    padding: 0 !important;
+    margin-left: -7px;
+    margin-bottom: -10px;
+    display: none;
+    -moz-transition: all 500ms ease-out;
+    -o-transition: all 500ms ease-out;
+    transition: all 500ms ease-out;
+}
+
+.sportmenu-preparing {
+    padding: 0 !important;
+    margin-left: -7px;
+    margin-bottom: -10px;
+    display: none;
+    -moz-transition: all 500ms ease-out;
+    -o-transition: all 500ms ease-out;
+    transition: all 500ms ease-out;
+}
+
+.sportmenu-plus {
+    font-size: 14px;
+    margin: 0 !important;
+    margin-left: auto !important;
+}
+
+.left-col-sportmenu .mt-auto {
+    font-size: 14px;
+}
+
+.left-col-sportmenu .mt-auto .fa-clock {
+    font-size: 16px;
+}
+
+.last-sportmenu .mt-auto {
+    font-size: 14px;
+}
+
+.last-sportmenu .mt-auto .fa-clock {
+    font-size: 16px;
+}
+
+.left-col-sportmenu {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.right-col-sportmenu {
+    padding-top: 10px;
+    padding-right: 10px;
+}
+
+.sportmenu-images {
+    height: 180px;
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(assets/img/sportmenu.jpg);
+    color: white;
+    overflow: hidden;
+    -moz-transition: all 500ms ease-out;
+    -o-transition: all 500ms ease-out;
+    transition: all 500ms ease-out;
+}
+
+.sportmenu-images:hover {
+    position: relative;
+    background-image: linear-gradient(white, white), url(assets/img/sportmenu.jpg);
+    transform: scale(1.1);
+    z-index: 2;
+    box-shadow: 0 0px 60px -10px rgba(0, 0, 0, 0.8);
+}
+
+.sportmenu-images:hover .sportmenu-ingridients,
+.sportmenu-images:hover .sportmenu-preparing {
+    display: block;
+    color: black;
+}
+
+.sportmenu-images:hover .sportmenu-stars,
+.sportmenu-images:hover .sportmenu-plus {
+    color: black;
+}
+
+.sportmenu-images:hover .sportmenu-otstup-stars {
+    display: none;
+}
+
+.sportmenu-images:hover .left-col-sportmenu {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(assets/img/sportmenu.jpg);
+    color: white;
+}
+
+.last-sportmenu {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(assets/img/sportmenu.jpg);
+    position: relative;
+    z-index: 0;
+    transform: scale(1);
+    transition: none;
+}
+
+.last-sportmenu:hover {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(assets/img/sportmenu.jpg);
+    transform: scale(1);
+    transition: none;
+    box-shadow: none;
+}
+
+.snidanok-time {
+    margin-left: 42px;
+}
+
+.register-button {
+    border-radius: 20px !important;
+    margin-top: 290px !important;
+    font-size: 10px !important;
+    padding-left: -10px !important;
+    padding-right: -10px !important;
+}
+
+.left-sidebar {
+    position: relative;
+    z-index: 2;
+    padding-left: -5px !important;
+    box-shadow: -125px 50px 200px 0px rgba(255, 255, 255, 0.4);
+}
+
+.left-sidebar .fa-clock {
+    font-size: 18px;
+}
+
+.dream {
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: 20px;
+}
+
+.dream .fa-minus-circle {
+    margin-left: 15px;
+}
+
+.zdo {
+    background-color: black;
+    color: white;
+    font-weight: 400;
+    font-size: 16px;
+    margin-top: 320px;
+    height: 50px;
+}
+
+.zdo .fa-plus-circle {
+    margin-left: 5px;
+}
+
+.eating {
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.eating span {
+    margin-left: 20px;
+    color: #8E8E8E;
+}
+
+.rekomendovano {
+    margin-top: 3px;
+    font-size: 10px;
+}
+
+.eggs {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-right: -20px;
+    font-size: 8px;
+}

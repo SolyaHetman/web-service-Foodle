@@ -1,14 +1,3 @@
-<!-- <section class="section-signin mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-4 mx-auto">
-                <input type="email" [(ngModel)]="register.email" placeholder="email">
-                <input type="password" [(ngModel)]="register.password" placeholder="password">
-                <button type="submit" class="btn mx-auto d-block mt-4 " (click)="registerUser()">Зареєструватись</button>
-            </div>
-        </div>
-    </div>
-</section> -->
 <!-- <navbar></navbar> -->
 <section class="section-signin mt-5">
     <div class="container">
@@ -32,6 +21,47 @@
                             Name must not exceed 15 characters.
                         </p>
                     </div>
+                    <div *ngIf="name.invalid && (name.dirty || isSubmitted)" class="form-group text-danger">
+                        <p *ngIf="name.errors.required">
+                            Name is required.
+                        </p>
+                        <p *ngIf="name.errors.minlength">
+                            Name must be at least 4 characters long.
+                        </p>
+                        <p *ngIf="name.errors.maxlength">
+                            Name must not exceed 15 characters.
+                        </p>
+                    </div>
+
+                    <div class="form-group d-flex align-items-end justify-content-between">
+                        <label class="mb-0" for="last_name">Прізвище:</label>
+                        <input type="text" class="form-control" id="last_name" formControlName='last_name' [(ngModel)]="register.last_name" placeholder="last_name">
+                    </div>
+                    <!-- Name errors showcase -->
+                    <div *ngIf="last_name.invalid && (last_name.dirty || isSubmitted)" class="form-group text-danger">
+                        <p *ngIf="last_name.errors.required">
+                            Last_name is required.
+                        </p>
+                        <p *ngIf="last_name.errors.minlength">
+                            Last_name must be at least 4 characters long.
+                        </p>
+                        <p *ngIf="last_name.errors.maxlength">
+                            Last_name must not exceed 15 characters.
+                        </p>
+                    </div>
+                    <div *ngIf="last_name.invalid && (last_name.dirty || isSubmitted)" class="form-group text-danger">
+                        <p *ngIf="last_name.errors.required">
+                            Last_name is required.
+                        </p>
+                        <p *ngIf="last_name.errors.minlength">
+                            Last_name must be at least 4 characters long.
+                        </p>
+                        <p *ngIf="last_name.errors.maxlength">
+                            Last_name must not exceed 15 characters.
+                        </p>
+                    </div>
+
+
                     <div class="form-group d-flex align-items-end justify-content-between">
                         <label class="mb-0" for="e-mail">E-mail:</label>
                         <input type="email" class="form-control" id="e-mail" formControlName='email' [(ngModel)]="register.email" placeholder="email">
@@ -61,31 +91,32 @@
                             Name must not exceed 15 characters.
                         </p>
                     </div>
-                    <div class="form-group d-flex align-items-end justify-content-between mt-5">
+
+                    <!-- <div class="form-group d-flex align-items-end justify-content-between mt-5">
                         <label class="mb-0" for="age">Вік: </label>
                         <input type="text" class="form-control" id="age" formControlName='age' placeholder="age">
                     </div>
                     <!-- age errors showcase -->
-                    <div class="form-group text-danger" *ngIf="age.invalid && (age.dirty || isSubmitted)">
+                    <!-- <div class="form-group text-danger" *ngIf="age.invalid && (age.dirty || isSubmitted)">
                         <p *ngIf="age.errors.pattern"></p>
                         only numbers.
-                    </div>
+                    </div> -->
 
-                    <div class="form-group d-flex align-items-end justify-content-between">
+                    <!-- <div class="form-group d-flex align-items-end justify-content-between">
                         <label class="mb-0" for="height">Ріст: </label>
                         <input type="text" class="form-control" id="height" formControlName='height' placeholder="height">
-                    </div>
+                    </div> -->
                     <!-- height errors showcase -->
-                    <div class="form-group text-danger" *ngIf="height.invalid && (height.dirty || isSubmitted)">
+                    <!-- <div class="form-group text-danger" *ngIf="height.invalid && (height.dirty || isSubmitted)">
                         <p *ngIf="height.errors.pattern"></p>
                         only numbers.
                     </div>
                     <div class="form-group d-flex align-items-end justify-content-between">
                         <label class="mb-0" for="weight">Вага: </label>
                         <input type="text" class="form-control" id="weight" formControlName='weight' placeholder="weight">
-                    </div>
+                    </div> -->
                     <!-- weight errors showcase -->
-                    <div class="form-group text-danger" *ngIf="weight.invalid && (weight.dirty || isSubmitted)">
+                    <!-- <div class="form-group text-danger" *ngIf="weight.invalid && (weight.dirty || isSubmitted)">
                         <p *ngIf="weight.errors.pattern"></p>
                         only numbers.
                     </div>
@@ -95,7 +126,7 @@
                             <option value="чоловіча">Чоловіча</option>
                             <option value="Жіноча">Жіноча</option>
                         </select>
-                    </div>
+                    </div> -->
 
                     <!-- Захворювання -->
                     <div class="form-group d-flex align-items-end justify-content-between">

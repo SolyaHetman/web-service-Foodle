@@ -41,14 +41,15 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
     this.form = this.frmBuilder.group({
       name:["", [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],
+      last_name:["", [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],
       email:["", [Validators.required, Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)]],
       password:["", [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
       disease:["", [Validators.required]],
       allergy:["", [Validators.required]],
       cuisine:["", [Validators.required]],
-      age:["", [Validators.required, Validators.pattern(/^[0-9\s]*$/)]],
-      height:["", [Validators.required, Validators.pattern(/^[0-9\s]*$/)]],
-      weight:["", [Validators.required, Validators.pattern(/^[0-9\s]*$/)]],
+      // age:["", [Validators.required, Validators.pattern(/^[0-9\s]*$/)]],
+      // height:["", [Validators.required, Validators.pattern(/^[0-9\s]*$/)]],
+      // weight:["", [Validators.required, Validators.pattern(/^[0-9\s]*$/)]],
 
     });
     this.register = {
@@ -85,14 +86,15 @@ export class SignupComponent implements OnInit {
     )
   }
   get name() { return this.form.get('name'); }
+  get last_name() { return this.form.get('last_name'); }
   get email() { return this.form.get('email'); }
   get password() { return this.form.get('password'); }
   get disease() { return this.form.get('disease'); }
   get allergy() { return this.form.get('allergy'); }
   get cuisine() { return this.form.get('cuisine'); }
-  get age() { return this.form.get('age'); }
-  get height() { return this.form.get('height'); }
-  get weight() { return this.form.get('weight'); }
+  // get age() { return this.form.get('age'); }
+  // get height() { return this.form.get('height'); }
+  // get weight() { return this.form.get('weight'); }
 
   save(){
     this.isSubmitted = true;

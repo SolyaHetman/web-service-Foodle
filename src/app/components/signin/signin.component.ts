@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class SigninComponent implements OnInit {
   public form = {
-    username: '',
+    email: '',
     password: ''
   };
   private url: string = 'http://188.166.100.169:8080/api/v1/login/';

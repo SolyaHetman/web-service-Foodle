@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this._getRecipe.getRecipes()
       .subscribe(
-        data => console.log(this.recipes = data)
+        data => this.recipes = data
       );
     
   }

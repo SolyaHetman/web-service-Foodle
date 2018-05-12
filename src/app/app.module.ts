@@ -2,9 +2,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
+import { CustomHttpInterceptor } from './http-interceptor';
+import { TokenService } from './services/token.service';
+
 
 // Components
 import { AppComponent } from './app.component';
@@ -30,7 +33,14 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     FlashMessagesModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomHttpInterceptor,
+      multi: true
+    },
+    TokenService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

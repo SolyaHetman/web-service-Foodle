@@ -3,6 +3,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router'
 
 
 const routes: Routes = [
@@ -15,6 +17,22 @@ const routes: Routes = [
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
+export class AppRoutingModule {
 
-export class AppRoutingModule {}
+	constructor (private route: ActivatedRoute, private router: Router){}
+
+	navigate(url) {
+		this.router.navigate([url]);
+	}
+
+	signIn() {
+		this.router.navigate(['signin']);
+	}
+
+	dashboard() {
+		this.router.navigate(['dashboard']);
+	}
+
+}
+
 export const routingComponents = [DashboardComponent, SignupComponent, SigninComponent]

@@ -53,6 +53,7 @@ export class SignupComponent implements OnInit {
 
     });
     this.register = {
+      first_name:'',
       email: '',
       password: '',
       diseases: [],

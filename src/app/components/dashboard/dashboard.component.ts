@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private frmBuilder: FormBuilder, 
     private _getRecipe: GetRecipesService,
+    private _elRef: ElementRef,
     public elref: ElementRef, 
     public renderer: Renderer,
     public saveDiaryService: SaveDiaryService
@@ -40,11 +41,7 @@ export class DashboardComponent implements OnInit {
       }
       
   }
-  // remove(event) {
-  //   if (event.target.parentElement.classList.contains('form-group')) {
-  //     console.log('Works');
-  //   } else {console.log('Not work')}
-  // }
+ 
 
   // Add to Diary Item
   onClick(event) {
@@ -71,10 +68,18 @@ export class DashboardComponent implements OnInit {
     
       // Insert input and icon to .form-group
       formGroup.innerHTML += `<input type="text" class="form-control" name="recipe-name" [(ngModel)]="save.morning_recipes" value="${attrName}" ng-reflect-model="${attrId}" readonly>
-                              <i class="fa fa-minus-circle" aria-hidden="true" (click)="remove($event)"></i>
+                              <i class="fa fa-minus-circle delete-btn" aria-hidden="true"></i>
       `;
       // Insert .form-group to <form>
       form.insertBefore(formGroup,saveBtn );
+
+      // Remove item from Diary
+      let children = document.getElementsByClassName("delete-btn");
+      for(let i =0; i< children.length; i++) {
+        children[i].addEventListener('click', (event) => {
+          event.currentTarget.parentElement.remove();
+        });
+      }
       
     }
   }

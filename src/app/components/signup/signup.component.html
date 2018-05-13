@@ -7,7 +7,7 @@
                 <form [formGroup]='form' (ngSubmit)='save()' novalidate>
                     <div class="form-group d-flex align-items-end justify-content-between">
                         <label class="mb-0" for="user-name">Ім'я:</label>
-                        <input type="text" class="form-control" id="user-name" formControlName='name' [(ngModel)]="register.username" placeholder="username">
+                        <input type="text" class="form-control" id="user-name" formControlName='name' [(ngModel)]="register.first_name" placeholder="username">
                     </div>
                     <!-- Name errors showcase -->
                     <div *ngIf="name.invalid && (name.dirty || isSubmitted)" class="form-group text-danger">

@@ -48,7 +48,7 @@
                 <!-- Diary Form -->
                 <form (ngSubmit)='saveDiary($event)' id="form">
                     <input class="form-control" type="hidden" [(ngModel)]="save.name" value="diary-name" name="diary-name" readonly>
-
+                    <i class="fa fa-minus-circle delete-btn d-none" aria-hidden="true"></i>
                     <button type="submit" class="btn btn-outline-dark register-button" id="save-btn">Зберегти меню</button>
                 </form>
             </div>

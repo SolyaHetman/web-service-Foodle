@@ -21,6 +21,8 @@ export class DashboardComponent implements OnInit {
   public recipes = [];
   save_diary_form = {
     'name': '',
+    'date_from': '',
+    'date_to': '',
     'morning_recipes': [],
     'lunch_recipes': [],
     'dinner_recipes': [],
@@ -35,6 +37,7 @@ export class DashboardComponent implements OnInit {
     private http: HttpClient,
     private frmBuilder: FormBuilder, 
     private _getRecipe: GetRecipesService,
+    private _elRef: ElementRef,
     public elref: ElementRef, 
     public renderer: Renderer,
     public saveDiaryService: SaveDiaryService
@@ -46,14 +49,10 @@ export class DashboardComponent implements OnInit {
         data => this.recipes = data
       );
   }
-  // remove(event) {
-  //   if (event.target.parentElement.classList.contains('form-group')) {
-  //     console.log('Works');
-  //   } else {console.log('Not work')}
-  // }
+ 
 
   // Add to Diary Item
-  onClick(event, type) {
+  onSelectRecipe(event, type) {
     const form = document.getElementById('create-diary-form');
     const saveBtn = document.getElementById('save-btn');
 
@@ -62,23 +61,50 @@ export class DashboardComponent implements OnInit {
       // Get Name of Recipe
       let attrName = event.target.getAttribute('data-name');
       let attrId = event.target.getAttribute('data-id');
-
+      console.log(type)
       switch (type) {
-        case "morning":
-          this.save_diary_form.morning_recipes.push(attrId)
-        case "lunch":
-          this.save_diary_form.lunch_recipes.push(attrId)
-        case "dinner":
-          this.save_diary_form.dinner_recipes.push(attrId)
-        case "supper":
-          this.save_diary_form.supper_recipes.push(attrId)
+        case "morning":{
+          this.save_diary_form.morning_recipes.push(attrId);
+          break;
+        }
+        case "lunch":{
+          this.save_diary_form.lunch_recipes.push(attrId);
+          break;
+        }
+        case "dinner":{
+          this.save_diary_form.dinner_recipes.push(attrId);
+          break;
+        }
+        case "supper":{
+          this.save_diary_form.supper_recipes.push(attrId);
+          break;
+        }
       }
 
       const formGroup = document.createElement('div');
       const icon = document.createElement('i');
 
       formGroup.innerHTML += `${attrName}`
+
+      // Div
+      formGroup.classList.add('form-group','d-flex', 'align-items-center');
+
+      // I
+      icon.classList.add('fa','fa-minus-circle');
+    
+      // Insert input and icon to .form-group
+      formGroup.innerHTML += `<i class="fa fa-minus-circle delete-btn" aria-hidden="true"></i>`;
+      // Insert .form-group to <form>
       form.insertBefore(formGroup, saveBtn);
+
+      // Remove item from Diary
+      let children = document.getElementsByClassName("delete-btn");
+      for(let i =0; i< children.length; i++) {
+        children[i].addEventListener('click', (event) => {
+          event.currentTarget.parentElement.remove();
+        });
+      }
+
     }
   }
 

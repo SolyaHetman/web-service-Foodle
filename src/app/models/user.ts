@@ -1,10 +1,7 @@
 export class User {
-    // username: 'string';
-    // password: 'string';
-    // email: 'string';
-    // id: 0
     email: 'string';
     password: 'string';
+    first_name: 'string';
     diseases: any[];
     allergies: any[];
     cuisines: any[]

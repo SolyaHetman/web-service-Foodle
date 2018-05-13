@@ -8,7 +8,6 @@ import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { CustomHttpInterceptor } from './http-interceptor';
 import { TokenService } from './services/token.service';
 
-
 // Components
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -18,14 +17,12 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DiaryComponent } from './components/diary/diary.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     routingComponents,
     DiaryComponent,
-   
   ],
   imports: [
     BrowserModule,

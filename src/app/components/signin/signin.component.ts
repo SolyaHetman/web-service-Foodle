@@ -27,18 +27,13 @@ export class SigninComponent implements OnInit {
   onSubmit() {
     return this.http.post(this.url, this.form).subscribe(
       data => this.handleRespone(data),
-      // {
-      //   console.log(data);
-      //   this.router.navigate(['/dashboard']);
-      //   this.flashMessagesService.show(`Welcome ${this.form.username}`, { cssClass: 'alert-success', timeout: 3000 });
-      // },
       error => console.log(error)
     );
   }
 
   handleRespone(data) {
-    console.log(data);
     this.token.handle(data.token);
+    this.router.navigate(['/dashboard']);
   }
   ngOnInit() {
   }

@@ -39,87 +39,21 @@
 <div class="container-fluid main-content">
     <div class="row">
         <div class="col-12 col-md-2 first-sidebar">
-            <div class="bigletters">Продукти:</div>
-            <div class="lineunder"></div>
-            <div class="row carrot-block">
-                <div class="col-3 produces"><img class=" rounded-circle" src="assets/img/carrot.jpg" alt="dish">
-                    <div class="prod-rect">Морква</div>
-                </div>
-                <div class="col-3 produces"><img class=" rounded-circle" src="assets/img/carrot.jpg" alt="dish">
-                    <div class="prod-rect">Морква</div>
-                </div>
-                <div class="col-3 produces"><img class=" rounded-circle" src="assets/img/carrot.jpg" alt="dish">
-                    <div class="prod-rect">Морква</div>
-                </div>
-                <div class="col-3 produces d-md-none d-lg-block"><img class=" rounded-circle" src="assets/img/carrot.jpg" alt="dish">
-                    <div class="prod-rect">Морква</div>
-                </div>
-                <div class="col-12 otstup"></div>
-                <div class="col-3 produces"><img class=" rounded-circle" src="assets/img/carrot.jpg" alt="dish">
-                    <div class="prod-rect">Морква</div>
-                </div>
-                <div class="col-3 produces"><img class=" rounded-circle" src="assets/img/carrot.jpg" alt="dish">
-                    <div class="prod-rect">Морква</div>
-                </div>
-                <div class="col-3 produces"><img class=" rounded-circle" src="assets/img/carrot.jpg" alt="dish">
-                    <div class="prod-rect">Морква</div>
-                </div>
-                <div class="col-3 produces d-md-none d-lg-block"><img class=" rounded-circle" src="assets/img/carrot.jpg" alt="dish">
-                    <div class="prod-rect">Морква</div>
-                </div>
-            </div>
-
             <div class="choosed-dishes">
                 <div class="bigletters">Обрані страви:</div>
                 <div class="lineunder"></div>
-                <div class="row">
-                    <div class="col-10">
-                        <div class="upsalad">Салат фруктовий</div>
-                        <div>Салат фруктовий</div>
-                        <div>Салат фруктовий</div>
-                        <div>Салат фруктовий</div>
-                        <div>Салат фруктовий</div>
-                        <div>Салат фруктовий</div>
-                    </div>
-                    <div class="col-1 minuses-block">
-                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                        <i class="fa fa-minus-circle" aria-hidden="true"></i>
-                    </div>
-                </div>
             </div>
 
-            <div class="row justify-content-center">
-                <button type="button" class="btn btn-outline-dark register-button">Зберегти меню</button>
+            <div class="row justify-content-center" id="form-parent">
+                <!-- Diary Form -->
+                <form (ngSubmit)='saveDiary($event)' id="form">
+                    <input class="form-control" type="hidden" [(ngModel)]="save.name" value="diary-name" name="diary-name" readonly>
+
+                    <button type="submit" class="btn btn-outline-dark register-button" id="save-btn">Зберегти меню</button>
+                </form>
             </div>
         </div>
         <div class="col-12 col-md-9 mx-auto">
-            <div class="row days-menu justify-content-between">
-                <div class="col-1 bigletters">Пн
-                    <div class="lineunder"></div>
-                </div>
-                <div class="col-1 bigletters">Вт
-                    <div class="lineunder"></div>
-                </div>
-                <div class="col-1 bigletters">Ср
-                    <div class="lineunder"></div>
-                </div>
-                <div class="col-1 bigletters">Чт
-                    <div class="lineunder"></div>
-                </div>
-                <div class="col-1 bigletters">Пт
-                    <div class="lineunder"></div>
-                </div>
-                <div class="col-1 bigletters">Сб
-                    <div class="lineunder"></div>
-                </div>
-                <div class="col-1 bigletters">Нд
-                    <div class="lineunder"></div>
-                </div>
-            </div>
             <div class="row snidanok">
                 <div class="col-8">Сніданок
                     <div class="lineunder"></div>
@@ -130,47 +64,52 @@
             </div>
             <div id="carouselExampleControls" class="carousel slide row" data-interval="7000" data-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active" *ngFor="let data of recipes.breakfast; let first=first" [ngClass]="{active: first}">
-                        <div class="d-block w-100" alt="First slide">
-                            <div class="row scale-allow">
-                                <div class="col sportmenu-images margin-sportmenu" *ngFor="let data of recipes.breakfast">
-                                    <div class="row sportmenu-insider">
-                                        <div class="col-6 mh-100 left-col-sportmenu">
-                                            <div class="container-fluid">
-                                                <div class="row">
-                                                    <div class="col-12 salat-na-snidanok">{{ data.name }}</div>
-                                                    <div class="col-12 sportmenu-otstup"></div>
-                                                    <div class="col-12 mt-auto"><i class="far fa-clock"></i>{{ data.cook_time }}</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-5  ml-auto">
-                                            <div class="row right-col-sportmenu">
-                                                <div class="col-7 sportmenu-ingridients">
-                                                    <div><span class="font-weight-bold">Інградієнти:</span><br>
-                                                        <div class="eggs">
-                                                            <ul class="list-unstyled">
-                                                                <li *ngFor="let used_ingredients of data.used_ingredients">Інгредієнт: {{ used_ingredients.ingredient.name }}, Вага: {{ used_ingredients.weight }}</li>
-                                                            </ul>
-                                                            <!-- Рецепт{{ used_ingredients.recipe }} -->
+                    <ng-container *ngFor="let data of recipes.breakfast; let first=first; let i=index">
+                        <div class="carousel-item active" *ngIf="i % 4 === 0" [ngClass]="{active: first}">
+                            <div class="d-block w-100" alt="First slide">
+                                <div class="row scale-allow">
+                                    <div class="col sportmenu-images margin-sportmenu" *ngFor="let data of recipes.breakfast|slice:i:i+4">
+                                        <div class="row sportmenu-insider">
+                                            <div class="col-6 mh-100 left-col-sportmenu">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-12 salat-na-snidanok">
+                                                            <h5 class="recipe-name">{{ data.name }}</h5>
                                                         </div>
+                                                        <div class="col-12 sportmenu-otstup"></div>
+                                                        <div class="col-12 mt-auto"><i class="far fa-clock"></i>{{ data.cook_time }}</div>
                                                     </div>
                                                 </div>
-                                                <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
-                                                <div class="col-12 sportmenu-otstup-stars"></div>
-                                                <div class="col-12 sportmenu-preparing">
-                                                    <p><span class="font-weight-bold">Приготування:</span><br>{{ data.description }}...</p>
+                                            </div>
+                                            <div class="col-5  ml-auto">
+                                                <div class="row right-col-sportmenu">
+                                                    <div class="col-7 sportmenu-ingridients">
+                                                        <div><span class="font-weight-bold">Інградієнти:</span><br>
+                                                            <div class="eggs">
+                                                                <ul class="list-unstyled">
+                                                                    <li *ngFor="let used_ingredients of data.used_ingredients">Інгредієнт: {{ used_ingredients.ingredient.name }}, Вага: {{ used_ingredients.weight }}</li>
+                                                                </ul>
+                                                                <!-- Рецепт{{ used_ingredients.recipe }} -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Add to Diary Event -->
+                                                    <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle add-to-diary" aria-hidden="true" (click)="onClick($event)" attr.data-name="{{ data.name }}" attr.data-id="{{ data.id }}"></i></div>
+                                                    <div class="col-12 sportmenu-otstup-stars"></div>
+                                                    <div class="col-12 sportmenu-preparing">
+                                                        <p><span class="font-weight-bold">Приготування:</span><br>{{ data.description }}...</p>
+                                                    </div>
+                                                    <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
                                                 </div>
-                                                <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- ===== -->
                                 </div>
-                                <!-- ===== -->
                             </div>
                         </div>
-                    </div>
+                    </ng-container>
                 </div>
                 <a class="carousel-control-prev strilka-left" href="#carouselExampleControls" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -182,6 +121,337 @@
                 </a>
 
             </div>
+
+
+            <!-- START LUNCH -->
+            <div class="row lunch">
+                <div class="col-8">Lunch
+                    <div class="lineunder"></div>
+                </div>
+                <div class="col-3 snidanok-time">14:00-16:30
+                    <div class="lineunder"></div>
+                </div>
+            </div>
+            <div id="carouselExampleControls1" class="carousel slide row carousel-margin" data-interval="10000" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="d-block w-100" alt="First slide">
+                            <div class="row scale-allow">
+                                <div class="col sportmenu-images margin-sportmenu">
+                                    <div class="row sportmenu-insider">
+                                        <div class="col-6 mh-100 left-col-sportmenu">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-12 salat-na-snidanok">Салат на сніданок</div>
+                                                    <div class="col-12 sportmenu-otstup"></div>
+                                                    <div class="col-12 mt-auto"><i class="far fa-clock"></i> 45</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-5  ml-auto">
+                                            <div class="row right-col-sportmenu">
+                                                <div class="col-7 sportmenu-ingridients">
+                                                    <div><span class="font-weight-bold">Інградієнти:</span><br>
+                                                        <div class="eggs">яйця 2 шт листя шпинату тертий сир шинка</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+                                                <div class="col-12 sportmenu-otstup-stars"></div>
+                                                <div class="col-12 sportmenu-preparing">
+                                                    <p><span class="font-weight-bold">Приготування:</span><br>Яйця збити виделкою в тарілці. Порізати шпинат та шинку, додати...</p>
+                                                </div>
+                                                <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col sportmenu-images">
+                                    <div class="row sportmenu-insider">
+                                        <div class="col-6 left-col-sportmenu">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-12 salat-na-snidanok">Салат на сніданок</div>
+                                                    <div class="col-12 sportmenu-otstup"></div>
+                                                    <div class="col-12 mt-auto"><i class="far fa-clock"></i> 45</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-5  ml-auto">
+                                            <div class="row right-col-sportmenu">
+                                                <div class="col-7 sportmenu-ingridients">
+                                                    <div><span class="font-weight-bold">Інградієнти:</span><br>
+                                                        <div class="eggs">яйця 2 шт листя шпинату тертий сир шинка</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+                                                <div class="col-12 sportmenu-otstup-stars"></div>
+                                                <div class="col-12 sportmenu-preparing">
+                                                    <p><span class="font-weight-bold">Приготування:</span><br>Яйця збити виделкою в тарілці. Порізати шпинат та шинку, додати...</p>
+                                                </div>
+                                                <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col sportmenu-images">
+                                    <div class="row sportmenu-insider">
+                                        <div class="col-6 left-col-sportmenu">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-12 salat-na-snidanok">Салат на сніданок</div>
+                                                    <div class="col-12 sportmenu-otstup"></div>
+                                                    <div class="col-12 mt-auto"><i class="far fa-clock"></i> 45</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-5  ml-auto">
+                                            <div class="row right-col-sportmenu">
+                                                <div class="col-7 sportmenu-ingridients">
+                                                    <div><span class="font-weight-bold">Інградієнти:</span><br>
+                                                        <div class="eggs">яйця 2 шт листя шпинату тертий сир шинка</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+                                                <div class="col-12 sportmenu-otstup-stars"></div>
+                                                <div class="col-12 sportmenu-preparing">
+                                                    <p><span class="font-weight-bold">Приготування:</span><br>Яйця збити виделкою в тарілці. Порізати шпинат та шинку, додати...</p>
+                                                </div>
+                                                <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 sportmenu-images last-sportmenu">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-11 salat-na-snidanok">Салат на сніданок</div>
+                                            <div class="col-11 sportmenu-otstup"></div>
+                                            <div class="col-11 mt-auto"><i class="far fa-clock"></i> 45</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-block w-100" alt="First slide">
+                            <div class="row scale-allow">
+                                <div class="col sportmenu-images margin-sportmenu">
+                                    <div class="row sportmenu-insider">
+                                        <div class="col-6 mh-100 left-col-sportmenu">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-12 salat-na-snidanok">Салат на сніданок</div>
+                                                    <div class="col-12 sportmenu-otstup"></div>
+                                                    <div class="col-12 mt-auto"><i class="far fa-clock"></i> 45</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-5  ml-auto">
+                                            <div class="row right-col-sportmenu">
+                                                <div class="col-7 sportmenu-ingridients">
+                                                    <div><span class="font-weight-bold">Інградієнти:</span><br>
+                                                        <div class="eggs">яйця 2 шт листя шпинату тертий сир шинка</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+                                                <div class="col-12 sportmenu-otstup-stars"></div>
+                                                <div class="col-12 sportmenu-preparing">
+                                                    <p><span class="font-weight-bold">Приготування:</span><br>Яйця збити виделкою в тарілці. Порізати шпинат та шинку, додати...</p>
+                                                </div>
+                                                <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col sportmenu-images">
+                                    <div class="row sportmenu-insider">
+                                        <div class="col-6 left-col-sportmenu">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-12 salat-na-snidanok">Салат на сніданок</div>
+                                                    <div class="col-12 sportmenu-otstup"></div>
+                                                    <div class="col-12 mt-auto"><i class="far fa-clock"></i> 45</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-5  ml-auto">
+                                            <div class="row right-col-sportmenu">
+                                                <div class="col-7 sportmenu-ingridients">
+                                                    <div><span class="font-weight-bold">Інградієнти:</span><br>
+                                                        <div class="eggs">яйця 2 шт листя шпинату тертий сир шинка</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+                                                <div class="col-12 sportmenu-otstup-stars"></div>
+                                                <div class="col-12 sportmenu-preparing">
+                                                    <p><span class="font-weight-bold">Приготування:</span><br>Яйця збити виделкою в тарілці. Порізати шпинат та шинку, додати...</p>
+                                                </div>
+                                                <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col sportmenu-images">
+                                    <div class="row sportmenu-insider">
+                                        <div class="col-6 left-col-sportmenu">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-12 salat-na-snidanok">Салат на сніданок</div>
+                                                    <div class="col-12 sportmenu-otstup"></div>
+                                                    <div class="col-12 mt-auto"><i class="far fa-clock"></i> 45</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-5  ml-auto">
+                                            <div class="row right-col-sportmenu">
+                                                <div class="col-7 sportmenu-ingridients">
+                                                    <div><span class="font-weight-bold">Інградієнти:</span><br>
+                                                        <div class="eggs">яйця 2 шт листя шпинату тертий сир шинка</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+                                                <div class="col-12 sportmenu-otstup-stars"></div>
+                                                <div class="col-12 sportmenu-preparing">
+                                                    <p><span class="font-weight-bold">Приготування:</span><br>Яйця збити виделкою в тарілці. Порізати шпинат та шинку, додати...</p>
+                                                </div>
+                                                <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 sportmenu-images last-sportmenu">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-11 salat-na-snidanok">Салат на сніданок</div>
+                                            <div class="col-11 sportmenu-otstup"></div>
+                                            <div class="col-11 mt-auto"><i class="far fa-clock"></i> 45</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="d-block w-100" alt="First slide">
+                            <div class="row scale-allow">
+                                <div class="col sportmenu-images margin-sportmenu">
+                                    <div class="row sportmenu-insider">
+                                        <div class="col-6 mh-100 left-col-sportmenu">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-12 salat-na-snidanok">Салат на сніданок</div>
+                                                    <div class="col-12 sportmenu-otstup"></div>
+                                                    <div class="col-12 mt-auto"><i class="far fa-clock"></i> 45</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-5  ml-auto">
+                                            <div class="row right-col-sportmenu">
+                                                <div class="col-7 sportmenu-ingridients">
+                                                    <div><span class="font-weight-bold">Інградієнти:</span><br>
+                                                        <div class="eggs">яйця 2 шт листя шпинату тертий сир шинка</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+                                                <div class="col-12 sportmenu-otstup-stars"></div>
+                                                <div class="col-12 sportmenu-preparing">
+                                                    <p><span class="font-weight-bold">Приготування:</span><br>Яйця збити виделкою в тарілці. Порізати шпинат та шинку, додати...</p>
+                                                </div>
+                                                <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col sportmenu-images">
+                                    <div class="row sportmenu-insider">
+                                        <div class="col-6 left-col-sportmenu">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-12 salat-na-snidanok">Салат на сніданок</div>
+                                                    <div class="col-12 sportmenu-otstup"></div>
+                                                    <div class="col-12 mt-auto"><i class="far fa-clock"></i> 45</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-5  ml-auto">
+                                            <div class="row right-col-sportmenu">
+                                                <div class="col-7 sportmenu-ingridients">
+                                                    <div><span class="font-weight-bold">Інградієнти:</span><br>
+                                                        <div class="eggs">яйця 2 шт листя шпинату тертий сир шинка</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+                                                <div class="col-12 sportmenu-otstup-stars"></div>
+                                                <div class="col-12 sportmenu-preparing">
+                                                    <p><span class="font-weight-bold">Приготування:</span><br>Яйця збити виделкою в тарілці. Порізати шпинат та шинку, додати...</p>
+                                                </div>
+                                                <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col sportmenu-images">
+                                    <div class="row sportmenu-insider">
+                                        <div class="col-6 left-col-sportmenu">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-12 salat-na-snidanok">Салат на сніданок</div>
+                                                    <div class="col-12 sportmenu-otstup"></div>
+                                                    <div class="col-12 mt-auto"><i class="far fa-clock"></i> 45</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-5  ml-auto">
+                                            <div class="row right-col-sportmenu">
+                                                <div class="col-7 sportmenu-ingridients">
+                                                    <div><span class="font-weight-bold">Інградієнти:</span><br>
+                                                        <div class="eggs">яйця 2 шт листя шпинату тертий сир шинка</div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle" aria-hidden="true"></i></div>
+                                                <div class="col-12 sportmenu-otstup-stars"></div>
+                                                <div class="col-12 sportmenu-preparing">
+                                                    <p><span class="font-weight-bold">Приготування:</span><br>Яйця збити виделкою в тарілці. Порізати шпинат та шинку, додати...</p>
+                                                </div>
+                                                <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2 sportmenu-images last-sportmenu">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-11 salat-na-snidanok">Салат на сніданок</div>
+                                            <div class="col-11 sportmenu-otstup"></div>
+                                            <div class="col-11 mt-auto"><i class="far fa-clock"></i> 45</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev strilka-left" href="#carouselExampleControls1" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next strilka-right" href="#carouselExampleControls1" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+            <!-- END LUNCH -->
+
             <div class="row obid">
                 <div class="col-8">Обід
                     <div class="lineunder"></div>
@@ -508,6 +778,8 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
+
+
             <div class="row vecherya">
                 <div class="col-8">Вечеря
                     <div class="lineunder"></div>

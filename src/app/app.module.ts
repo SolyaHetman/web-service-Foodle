@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DiaryComponent } from './components/diary/diary.component';
 
 
 
@@ -20,6 +21,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     AppComponent,
     NavbarComponent,
     routingComponents,
+    DiaryComponent,
    
   ],
   imports: [

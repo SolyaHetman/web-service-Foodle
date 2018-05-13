@@ -1,13 +1,14 @@
-import { MorgningRecipes } from './../../models/morning-recipes';
 import { Component, OnInit } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
-import { Recipe } from '../../models/recipe';
-import { GetRecipesService } from '../../services/get-recipes.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AfterViewInit, ElementRef, Renderer } from '@angular/core';
-import { Diary } from '../../models/diary';
-import { SaveDiaryService } from '../../services/save-diary.service';
 import { FormGroup, FormBuilder, Validators, FormsModule  } from '@angular/forms';
+
+import { Recipe } from '../../models/recipe';
+import { Diary } from '../../models/diary';
+import { GetRecipesService } from '../../services/get-recipes.service';
+import { MorgningRecipes } from './../../models/morning-recipes';
+import { SaveDiaryService } from '../../services/save-diary.service';
 
 
 @Component({
@@ -18,10 +19,20 @@ import { FormGroup, FormBuilder, Validators, FormsModule  } from '@angular/forms
 })
 export class DashboardComponent implements OnInit {
   public recipes = [];
-  public diaryItems = [];
-  save;
+  save_diary_form = {
+    'name': '',
+    'morning_recipes': [],
+    'lunch_recipes': [],
+    'dinner_recipes': [],
+    'supper_recipes': [],
+  }
+
+  private url: string = 'http://188.166.100.169:8080/api/v1/diaries/create/';
+
   form: FormGroup;
+
   constructor(
+    private http: HttpClient,
     private frmBuilder: FormBuilder, 
     private _getRecipe: GetRecipesService,
     public elref: ElementRef, 
@@ -34,11 +45,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         data => this.recipes = data
       );
-      this.save = {
-        name: '',
-        morning_recipes: []
-      }
-      
   }
   // remove(event) {
   //   if (event.target.parentElement.classList.contains('form-group')) {
@@ -47,56 +53,43 @@ export class DashboardComponent implements OnInit {
   // }
 
   // Add to Diary Item
-  onClick(event) {
-    const form = document.getElementById('form');
-    const parent = document.getElementById('form-parent');
+  onClick(event, type) {
+    const form = document.getElementById('create-diary-form');
     const saveBtn = document.getElementById('save-btn');
 
     if (event.target.parentElement.classList.contains('sportmenu-plus')) {
-     
+
       // Get Name of Recipe
       let attrName = event.target.getAttribute('data-name');
       let attrId = event.target.getAttribute('data-id');
-      
-      // Create input
+
+      switch (type) {
+        case "morning":
+          this.save_diary_form.morning_recipes.push(attrId)
+        case "lunch":
+          this.save_diary_form.lunch_recipes.push(attrId)
+        case "dinner":
+          this.save_diary_form.dinner_recipes.push(attrId)
+        case "supper":
+          this.save_diary_form.supper_recipes.push(attrId)
+      }
+
       const formGroup = document.createElement('div');
-      const inputEl = document.createElement('input');
       const icon = document.createElement('i');
 
-      // Div
-      formGroup.classList.add('form-group','d-flex', 'align-items-center');
-
-      // I
-      icon.classList.add('fa','fa-minus-circle');
-    
-      // Insert input and icon to .form-group
-      formGroup.innerHTML += `<input type="text" class="form-control" name="recipe-name" [(ngModel)]="save.morning_recipes" value="${attrName}" ng-reflect-model="${attrId}" readonly>
-                              <i class="fa fa-minus-circle" aria-hidden="true" (click)="remove($event)"></i>
-      `;
-      // Insert .form-group to <form>
-      form.insertBefore(formGroup,saveBtn );
-      
+      formGroup.innerHTML += `${attrName}`
+      form.insertBefore(formGroup, saveBtn);
     }
   }
 
    // Save Diary
-   saveDiary() {
-    this.saveDiaryService.saveNewDiary(this.save).subscribe(
-        response => {
-            console.log(`${this.save.name} has been added`);
-        },
-        error => {
-          console.log('error', error);
-        }
-    )
+   saveDiary(e) {
+     console.log(e)
+     this.http.post(this.url, this.save_diary_form).subscribe(
+      data => function (data) {
+        this.token.handle(data.token);
+        this.router.navigate(['/dashboard']);
+      }
+    );
   }
-    
-
-   
-  }
-
-  
-
-  
-
-
+}

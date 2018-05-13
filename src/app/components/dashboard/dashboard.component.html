@@ -44,16 +44,29 @@
                 <div class="lineunder"></div>
             </div>
 
-            <div class="row justify-content-center" id="form-parent">
+            <div class="justify-content-center" id="form-parent">
                 <!-- Diary Form -->
-                <form (ngSubmit)='saveDiary($event)' id="form">
-                    <input class="form-control" type="hidden" [(ngModel)]="save.name" value="diary-name" name="diary-name" readonly>
+                <form (ngSubmit)='saveDiary($event)' id="create-diary-form">
 
+                    <input class="form-control" type="text" [(ngModel)]="save_diary_form.name" value="Some static name" placeholder="Diary Name" name="name">
+
+                    <input type="hidden" name="morning_recipes" [(ngModel)]="save_diary_form.morning_recipes">
+
+                    <input type="hidden" name="lunch_recipes" [(ngModel)]="save_diary_form.lunch_recipes">
+
+                    <input type="hidden" name="dinner_recipes" [(ngModel)]="save_diary_form.dinner_recipes">
+
+                    <input type="hidden" name="supper_recipes" [(ngModel)]="save_diary_form.supper_recipes">
+
+                    <br>
                     <button type="submit" class="btn btn-outline-dark register-button" id="save-btn">Зберегти меню</button>
                 </form>
             </div>
         </div>
+
         <div class="col-12 col-md-9 mx-auto">
+
+            {#  #}
             <div class="row snidanok">
                 <div class="col-8">Сніданок
                     <div class="lineunder"></div>
@@ -62,6 +75,7 @@
                     <div class="lineunder"></div>
                 </div>
             </div>
+
             <div id="carouselExampleControls" class="carousel slide row" data-interval="7000" data-ride="carousel">
                 <div class="carousel-inner">
                     <ng-container *ngFor="let data of recipes.breakfast; let first=first; let i=index">

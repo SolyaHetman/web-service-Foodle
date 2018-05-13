@@ -93,7 +93,12 @@ export class DashboardComponent implements OnInit {
       icon.classList.add('fa','fa-minus-circle');
     
       // Insert input and icon to .form-group
+      // formGroup.innerHTML += `<input type="text" class="border-0" name="recipe-name" [(ngModel)]="save.morning_recipes" value="${attrName}" ng-reflect-model="${attrId}" readonly>
+      //                         <i class="fa fa-minus-circle delete-btn" aria-hidden="true"></i>
+      // `;
       formGroup.innerHTML += `<i class="fa fa-minus-circle delete-btn" aria-hidden="true"></i>`;
+   
+
       // Insert .form-group to <form>
       form.insertBefore(formGroup, saveBtn);
 

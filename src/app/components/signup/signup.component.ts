@@ -75,12 +75,12 @@ export class SignupComponent implements OnInit {
     this.userService.registerNewUser(this.register).subscribe(
         response => {
             console.log(`User ${this.register.email} has been created`);
-            this.router.navigate(['/dashboard']);
+            this.router.navigate(['/signin']);
             this.flashMessagesService.show(`User ${this.register.email} has been created`, { cssClass: 'alert-success', timeout: 3000 });
         },
         error => {
           console.log('error', error);
-          if (error.status === 500) {
+          if (error.status === 400) {
             this.flashMessagesService.show(`User ${this.register.email} allready exists`, { cssClass: 'alert-danger', timeout: 3000 });
           } 
         }

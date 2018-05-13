@@ -7,7 +7,7 @@ export class TokenService {
 
   handle(token) {
     this.set(token);
-    console.log(this.payload(token));
+    console.log(this.isValid());
   }
 
   // Set to LS
@@ -29,9 +29,10 @@ export class TokenService {
     if(token) {
       const payload = this.payload(token);
       if(payload) {
-        // payload.iss
+        return true;
       }
     }
+    return false;
   }
 
   payload(token) {
@@ -41,5 +42,13 @@ export class TokenService {
 
   decode(payload) {
     return JSON.parse(atob(payload));
+  }
+
+  loggedIn() {
+    return this.isValid();
+  }
+
+  isTokenExpired(){
+
   }
 }

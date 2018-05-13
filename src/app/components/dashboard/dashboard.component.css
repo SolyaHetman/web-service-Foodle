@@ -160,8 +160,9 @@ body {
 }
 
 
-/* .choosed-dishes {
-    margin-top: 170px;
+/* 
+.choosed-dishes {
+    margin-top: -400px;
 } */
 
 .fa-minus-circle {
@@ -188,6 +189,12 @@ body {
 }
 
 .obid {
+    margin-top: -5px;
+    margin-bottom: 0px;
+    font-size: 18px;
+}
+
+.lunch {
     margin-top: -5px;
     margin-bottom: 0px;
     font-size: 18px;
@@ -423,3 +430,17 @@ body {
     margin-right: -20px;
     font-size: 8px;
 }
+
+form .form-group input {
+    background-color: unset !important;
+    border: unset !important;
+}
+
+form input.form-control:focus {
+    outline: unset;
+}
+
+
+/* .justify-content {
+    space-between;
+} */

@@ -16,7 +16,6 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DiaryComponent } from './components/diary/diary.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -2,3 +2,26 @@ nav .navbar-brand img {
     max-width: 130px;
     height: auto;
 }
+
+nav .navbar-brand img {
+    max-width: 130px;
+    height: auto;
+}
+
+nav .dropdown-menu {
+    background-color: #000;
+}
+
+nav .dropdown-menu a {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+nav .dropdown-menu a:hover {
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+.bg-dark {
+    background-color: #000000!important;
+}

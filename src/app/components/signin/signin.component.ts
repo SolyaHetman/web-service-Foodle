@@ -6,6 +6,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 import { Title } from "@angular/platform-browser";
 
+
 @Component({
   selector: 'signin',
   templateUrl: './signin.component.html',
@@ -37,7 +38,7 @@ export class SigninComponent implements OnInit {
 
   handleRespone(data) {
     this.token.handle(data.token);
-    this.authGuard.changeAuthStatus(true);
+    this.authGuard.getUser();
     this.router.navigate(['/dashboard']);
   }
 

@@ -20,7 +20,7 @@ export class CustomHttpInterceptor implements HttpInterceptor {
 
 		if (! (req.url.endsWith("/login/") || req.url.endsWith("/register/"))) {
 			const Authorization = this.tokenService.get(); //read the token from storahe
-			req = req.clone({ headers: req.headers.set('authorization', Authorization) });
+			req = req.clone({ headers: req.headers.set('Authorization', "Bearer " + Authorization) });
 		}
 		//send the newly created request
 		return next.handle(req)

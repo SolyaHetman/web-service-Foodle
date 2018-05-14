@@ -1,4 +1,16 @@
 <!-- START CONTENT -->
+<div class="diaries" *ngFor="let diary of diarys; let first=first">
+    <h2>
+        "Diary:" {{ diary.name }}
+    </h2>
+    <div class="recepies" *ngFor="let recipe of getAllRecipesFromDiary(diary); let first=first">
+        {{ recipe.name }}, {{ recipe.id }}
+    </div>
+    <hr>
+    
+</div>
+
+
 <div class="container-fluid main-content">
     <div class="row">
         <div class="col-12 col-md-12">
@@ -21,7 +33,7 @@
                                             <div class="container-fluid">
                                                 <div class="row">
                                                     <div class="col-12 salat-na-snidanok">
-                                                        <h5 class="diary-name">{{ diary.name }}</h5>
+                                                        <h5 class="diary-name"></h5>
                                                     </div>
                                                     <div class="col-12 sportmenu-otstup"></div>
                                                     <div class="col-12 mt-auto"><i class="far fa-clock"></i> 45</div>

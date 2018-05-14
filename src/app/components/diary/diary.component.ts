@@ -31,10 +31,13 @@ export class DiaryComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._getDiary. getDiarys()
+    this._getDiary.getDiarys()
       .subscribe(
         data => this.diarys = data
       );
   }
 
+  getAllRecipesFromDiary(diary) {
+    return [].concat(diary['morning']).concat(diary["lunch"]).concat(diary["dinner"]).concat(diary["supper"])
+  }
 }

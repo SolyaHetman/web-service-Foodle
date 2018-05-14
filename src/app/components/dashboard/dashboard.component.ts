@@ -4,6 +4,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AfterViewInit, ElementRef, Renderer } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormsModule  } from '@angular/forms';
 import { Title } from "@angular/platform-browser";
+import { Router } from '@angular/router';
+
 import { Recipe } from '../../models/recipe';
 import { Diary } from '../../models/diary';
 import { GetRecipesService } from '../../services/get-recipes.service';
@@ -40,6 +42,7 @@ export class DashboardComponent implements OnInit {
     private _elRef: ElementRef,
     private _titleService: Title,
     public elref: ElementRef, 
+    public router: Router,
     public renderer: Renderer,
     public saveDiaryService: SaveDiaryService
   ) { }
@@ -160,7 +163,7 @@ export class DashboardComponent implements OnInit {
     this.http.post(this.url, this.save_diary_form).subscribe(
       data => function (data) {
         this.token.handle(data.token);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/diary']);
       }
     );
   }

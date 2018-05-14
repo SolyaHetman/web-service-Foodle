@@ -34,6 +34,7 @@
 </nav> -->
 <!-- <div class="container-fluid topped-margin"></div> -->
 <!-- END NAVIGATION -->
+<navbar></navbar>
 
 <!-- START CONTENT -->
 <div class="container-fluid main-content">
@@ -89,8 +90,8 @@
                         <div class="carousel-item active" *ngIf="i % 4 === 0" [ngClass]="{active: first}">
                             <div class="d-block w-100" alt="First slide">
                                 <div class="row scale-allow">
+                                    <!-- <div class="col sportmenu-images margin-sportmenu" *ngFor="let recipe of recipes.breakfast|slice:i:i+4" [style.background-image]="'url('+recipe.photo+')'"> -->
                                     <div class="col sportmenu-images margin-sportmenu" *ngFor="let recipe of recipes.breakfast|slice:i:i+4">
-
                                         <div class="row sportmenu-insider">
                                             <div class="col-6 mh-100 left-col-sportmenu">
                                                 <div class="container-fluid">

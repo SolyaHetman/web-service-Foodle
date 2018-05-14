@@ -20,6 +20,7 @@ import { Title } from "@angular/platform-browser";
   styleUrls: ['./signup.component.css'],
   providers: [UserService, GetDiseasesService, GetAllergiesService, GetCuisinesService]
 })
+
 export class SignupComponent implements OnInit {
   public diseases = [];
   public allergies = [];
@@ -41,8 +42,10 @@ export class SignupComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // Set title
     this._titleService.setTitle('SignUp');
 
+    // Form Validation
     this.form = this.frmBuilder.group({
       name:["", [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],
       last_name:["", [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],
@@ -51,11 +54,10 @@ export class SignupComponent implements OnInit {
       disease:["", [Validators.required]],
       allergy:["", [Validators.required]],
       cuisine:["", [Validators.required]],
-      // age:["", [Validators.required, Validators.pattern(/^[0-9\s]*$/)]],
-      // height:["", [Validators.required, Validators.pattern(/^[0-9\s]*$/)]],
-      // weight:["", [Validators.required, Validators.pattern(/^[0-9\s]*$/)]],
 
     });
+
+    // UserData
     this.register = {
       first_name:'',
       email: '',
@@ -64,32 +66,40 @@ export class SignupComponent implements OnInit {
       allergies: [],
       cuisines: []
     };
+
+    // Get data from Service to select
     this.getDiseasesService.getDisases()
       .subscribe(data => this.diseases = data);
-    
+    // Get data from Service to select
     this.getAllergiesService.getAllergies()
       .subscribe(data => this.allergies = data);
-    
+    // Get data from Service to select
     this.getCuisinesService.getCuisines()
       .subscribe(data => this.cuisines = data);
   }
 
-  // Register User
+  // Register User on submit
   registerUser() {
     this.userService.registerNewUser(this.register).subscribe(
+      // On Success
         response => {
-            console.log(`User ${this.register.email} has been created`);
+            // Route to signin
             this.router.navigate(['/signin']);
+            // Success Message
             this.flashMessagesService.show(`User ${this.register.email} has been created`, { cssClass: 'alert-success', timeout: 3000 });
         },
+        // On Error
         error => {
-          console.log('error', error);
+          // console.log('error', error);
+          // Check error and show message
           if (error.status === 400) {
             this.flashMessagesService.show(`User ${this.register.email} allready exists`, { cssClass: 'alert-danger', timeout: 3000 });
           } 
         }
     )
   }
+
+  // Validation
   get name() { return this.form.get('name'); }
   get last_name() { return this.form.get('last_name'); }
   get email() { return this.form.get('email'); }
@@ -97,10 +107,8 @@ export class SignupComponent implements OnInit {
   get disease() { return this.form.get('disease'); }
   get allergy() { return this.form.get('allergy'); }
   get cuisine() { return this.form.get('cuisine'); }
-  // get age() { return this.form.get('age'); }
-  // get height() { return this.form.get('height'); }
-  // get weight() { return this.form.get('weight'); }
 
+  // Validate
   save(){
     this.isSubmitted = true;
     if(!this.form.valid) {

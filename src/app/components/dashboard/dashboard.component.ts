@@ -3,7 +3,7 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AfterViewInit, ElementRef, Renderer } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormsModule  } from '@angular/forms';
-
+import { Title } from "@angular/platform-browser";
 import { Recipe } from '../../models/recipe';
 import { Diary } from '../../models/diary';
 import { GetRecipesService } from '../../services/get-recipes.service';
@@ -38,12 +38,16 @@ export class DashboardComponent implements OnInit {
     private frmBuilder: FormBuilder, 
     private _getRecipe: GetRecipesService,
     private _elRef: ElementRef,
+    private _titleService: Title,
     public elref: ElementRef, 
     public renderer: Renderer,
     public saveDiaryService: SaveDiaryService
   ) { }
 
   ngOnInit() {
+
+    this._titleService.setTitle('Dashboard');
+
     this._getRecipe.getRecipes()
       .subscribe(
         data => this.recipes = data

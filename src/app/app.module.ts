@@ -7,6 +7,7 @@ import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { CustomHttpInterceptor } from './http-interceptor';
 import { TokenService } from './services/token.service';
+import { Title } from "@angular/platform-browser";
 
 // Components
 import { AppComponent } from './app.component';

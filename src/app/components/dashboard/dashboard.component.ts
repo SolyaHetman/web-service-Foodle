@@ -86,7 +86,7 @@ export class DashboardComponent implements OnInit {
       formGroup.innerHTML += `${attrName}`
 
       // Div
-      formGroup.classList.add('form-group', 'd-flex', 'align-items-center');
+      formGroup.classList.add('form-group', 'd-flex', 'align-items-center', 'justify-content-between');
 
       deleteButton.classList.add('fa', 'fa-minus-circle', 'delete-btn');
       deleteButton.setAttribute('data-recipe-id', attrId);
@@ -95,6 +95,7 @@ export class DashboardComponent implements OnInit {
       deleteButton.addEventListener('click', this.onDeleteRecipe.bind(this))
 
       formGroup.insertAdjacentElement('beforeend', deleteButton)
+
       form.insertBefore(formGroup, saveBtn);
     }
   }

@@ -61,7 +61,6 @@ export class DashboardComponent implements OnInit {
       // Get Name of Recipe
       let attrName = event.target.getAttribute('data-name');
       let attrId = event.target.getAttribute('data-id');
-      console.log(type)
       switch (type) {
         case "morning":{
           this.save_diary_form.morning_recipes.push(attrId);
@@ -82,41 +81,53 @@ export class DashboardComponent implements OnInit {
       }
 
       const formGroup = document.createElement('div');
-      const icon = document.createElement('i');
+      const deleteButton = document.createElement('i');
 
       formGroup.innerHTML += `${attrName}`
 
       // Div
-      formGroup.classList.add('form-group','d-flex', 'align-items-center');
+      formGroup.classList.add('form-group', 'd-flex', 'align-items-center');
 
-      // I
-      icon.classList.add('fa','fa-minus-circle');
-    
-      // Insert input and icon to .form-group
-      // formGroup.innerHTML += `<input type="text" class="border-0" name="recipe-name" [(ngModel)]="save.morning_recipes" value="${attrName}" ng-reflect-model="${attrId}" readonly>
-      //                         <i class="fa fa-minus-circle delete-btn" aria-hidden="true"></i>
-      // `;
-      formGroup.innerHTML += `<i class="fa fa-minus-circle delete-btn" aria-hidden="true"></i>`;
+      deleteButton.classList.add('fa', 'fa-minus-circle', 'delete-btn');
+      deleteButton.setAttribute('data-recipe-id', attrId);
+      deleteButton.setAttribute('data-recipe-type', type);
    
+      deleteButton.addEventListener('click', this.onDeleteRecipe.bind(this))
 
-      // Insert .form-group to <form>
+      formGroup.insertAdjacentElement('beforeend', deleteButton)
       form.insertBefore(formGroup, saveBtn);
-
-      // Remove item from Diary
-      let children = document.getElementsByClassName("delete-btn");
-      for(let i =0; i< children.length; i++) {
-        children[i].addEventListener('click', (event) => {
-          event.currentTarget.parentElement.remove();
-        });
-      }
-
     }
   }
 
-   // Save Diary
-   saveDiary(e) {
-     console.log(e)
-     this.http.post(this.url, this.save_diary_form).subscribe(
+  onDeleteRecipe(event) {
+    let clickedButton = event.srcElement
+    let id = clickedButton.getAttribute('data-recipe-id');
+    let type = clickedButton.getAttribute('data-recipe-type');
+
+    switch (type) {
+      case "morning":{
+        this.save_diary_form.morning_recipes = this.save_diary_form.morning_recipes.filter(item => item !== id);
+        break;
+      }
+      case "lunch":{
+        this.save_diary_form.lunch_recipes = this.save_diary_form.lunch_recipes.filter(item => item !== id);
+        break;
+      }
+      case "dinner":{
+        this.save_diary_form.dinner_recipes = this.save_diary_form.dinner_recipes.filter(item => item !== id);
+        break;
+      }
+      case "supper":{
+        this.save_diary_form.supper_recipes = this.save_diary_form.supper_recipes.filter(item => item !== id);
+        break;
+      }
+    }
+    clickedButton.parentElement.remove()
+  }
+
+  // Save Diary
+  saveDiary(e) {
+    this.http.post(this.url, this.save_diary_form).subscribe(
       data => function (data) {
         this.token.handle(data.token);
         this.router.navigate(['/dashboard']);

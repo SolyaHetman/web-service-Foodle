@@ -4,6 +4,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'signin',
@@ -21,6 +22,7 @@ export class SigninComponent implements OnInit {
   constructor(
     private http: HttpClient,
     public flashMessagesService: FlashMessagesService,
+    private _titleService: Title,
     public router: Router,
     private token: TokenService,
     private authGuard: AuthGuardService
@@ -45,6 +47,7 @@ export class SigninComponent implements OnInit {
     } 
   }
   ngOnInit() {
+    this._titleService.setTitle('SignIn');
   }
 
 }

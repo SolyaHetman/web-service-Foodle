@@ -4,10 +4,8 @@ import { FlashMessagesService } from 'angular2-flash-messages';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AfterViewInit, ElementRef, Renderer } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormsModule  } from '@angular/forms';
-
-
+import { Title } from "@angular/platform-browser";
 import { GetDiaryService } from '../../services/get-diary.service';
-
 
 @Component({
   selector: 'app-diary',
@@ -18,26 +16,38 @@ import { GetDiaryService } from '../../services/get-diary.service';
 export class DiaryComponent implements OnInit {
   public diarys = [];
 
-  
-
+ 
   constructor(
     private http: HttpClient,
     private frmBuilder: FormBuilder, 
     private _getDiary: GetDiaryService,
     private _elRef: ElementRef,
-    public elref: ElementRef, 
+    public elref: ElementRef,
+    private _titleService: Title, 
     public renderer: Renderer
     
   ) { }
 
   ngOnInit() {
+    this._titleService.setTitle('Diary');
     this._getDiary.getDiarys()
       .subscribe(
-        data => this.diarys = data
+        data => (this.diarys = data)
+        // data => {
+        //   console.log(this.diarys = this.diarys.concat(data))
+        // }
       );
   }
 
   getAllRecipesFromDiary(diary) {
     return [].concat(diary['morning']).concat(diary["lunch"]).concat(diary["dinner"]).concat(diary["supper"])
   }
+  myFunction(){
+
+    alert('Hello');
+
+    // return testf;
+
+  } 
+
 }

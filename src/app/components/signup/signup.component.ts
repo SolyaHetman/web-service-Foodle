@@ -12,6 +12,7 @@ import { FormGroup, FormBuilder, Validators, FormsModule  } from '@angular/forms
 import { HttpClientModule } from '@angular/common/http';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
+import { Title } from "@angular/platform-browser";
 
 @Component({
   selector: 'signup',
@@ -34,11 +35,14 @@ export class SignupComponent implements OnInit {
     private getDiseasesService: GetDiseasesService,
     private getAllergiesService: GetAllergiesService,
     private getCuisinesService: GetCuisinesService,
+    private _titleService: Title,
     public flashMessagesService: FlashMessagesService,
     public router: Router
   ) { }
 
   ngOnInit() {
+    this._titleService.setTitle('SignUp');
+
     this.form = this.frmBuilder.group({
       name:["", [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],
       last_name:["", [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],

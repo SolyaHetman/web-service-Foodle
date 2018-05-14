@@ -7,7 +7,9 @@ export class TokenService {
 
   handle(token) {
     this.set(token);
-    console.log(this.isValid());
+    console.log(this.payload(token));
+    // const obj = JSON.parse(this.payload(token))
+    // console.log(`Username: ${obj.email}`)
   }
 
   // Set to LS
@@ -28,6 +30,7 @@ export class TokenService {
     const token =this.get();
     if(token) {
       const payload = this.payload(token);
+      // console.log(payload.email);
       if(payload) {
         return true;
       }

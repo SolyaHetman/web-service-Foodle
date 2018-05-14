@@ -40,21 +40,22 @@
     <div class="row">
         <div class="col-12 col-md-2 first-sidebar">
             <div class="choosed-dishes">
-                <div class="bigletters">Обрані страви:</div>
+                <div class="bigletters">Мої збереження:</div>
                 <div class="lineunder"></div>
             </div>
 
             <div class="justify-content-center" id="form-parent">
-
                 <!-- Create Diary Form -->
-
-                <form (ngSubmit)='saveDiary($event)' id="create-diary-form">
-
-                    <input type="text" name="date_from" [(ngModel)]="save_diary_form.date_from">
-                    <input type="text" name="date_to" [(ngModel)]="save_diary_form.date_to">
-
-                    <input class="form-control" type="text" [(ngModel)]="save_diary_form.name" value="Some static name" placeholder="Diary Name" name="name">
-
+                <form class="pt-3" (ngSubmit)='saveDiary($event)' id="create-diary-form">
+                    <div class="form-group">
+                        <input class="form-control" type="text" [(ngModel)]="save_diary_form.name" value="Some static name" placeholder="Назва збереження" name="name">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="date" name="date_from" [(ngModel)]="save_diary_form.date_from">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="date" name="date_to" [(ngModel)]="save_diary_form.date_to">
+                    </div>
                     <input type="hidden" name="morning_recipes" [(ngModel)]="save_diary_form.morning_recipes">
 
                     <input type="hidden" name="lunch_recipes" [(ngModel)]="save_diary_form.lunch_recipes">
@@ -64,9 +65,9 @@
                     <input type="hidden" name="supper_recipes" [(ngModel)]="save_diary_form.supper_recipes">
 
                     <i class="fa fa-minus-circle delete-btn d-none" aria-hidden="true"></i>
-
+                    <h1 id="choose-title">Обрані страви: </h1>
                     <br>
-                    <button type="submit" class="btn btn-outline-dark register-button" id="save-btn">Зберегти меню</button>
+                    <button type="submit" class="btn btn-outline-dark register-button d-block mx-auto" id="save-btn">Зберегти меню</button>
                 </form>
             </div>
         </div>
@@ -290,9 +291,9 @@
             </div>
 
             <!-- End dinner recepies -->
-            
 
-                        <!-- Supper -->
+
+            <!-- Supper -->
             <div class="row snidanok">
                 <div class="col-8">Обід
                     <div class="lineunder"></div>

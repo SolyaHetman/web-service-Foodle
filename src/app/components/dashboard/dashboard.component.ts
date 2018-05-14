@@ -87,7 +87,7 @@ export class DashboardComponent implements OnInit {
       formGroup.innerHTML += `${attrName}`
 
       // Div
-      formGroup.classList.add('form-group','d-flex', 'align-items-center');
+      formGroup.classList.add('form-group','d-flex', 'align-items-center', 'justify-content-between');
 
       // I
       icon.classList.add('fa','fa-minus-circle');
@@ -101,7 +101,7 @@ export class DashboardComponent implements OnInit {
       let children = document.getElementsByClassName("delete-btn");
       for(let i =0; i< children.length; i++) {
         children[i].addEventListener('click', (event) => {
-          event.currentTarget.parentElement.remove();
+          // event.currentTarget.parentElement.remove();
         });
       }
 

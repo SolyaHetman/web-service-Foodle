@@ -61,21 +61,42 @@ export class DashboardComponent implements OnInit {
       // Get Name of Recipe
       let attrName = event.target.getAttribute('data-name');
       let attrId = event.target.getAttribute('data-id');
+
       switch (type) {
         case "morning":{
-          this.save_diary_form.morning_recipes.push(attrId);
+          if (this.save_diary_form.morning_recipes.indexOf(attrId) === -1) {
+            this.save_diary_form.morning_recipes.push(attrId);
+          } else {
+            this.raiseError("Ви вже вибрали цей рецепт");
+            return;
+          }
           break;
         }
         case "lunch":{
-          this.save_diary_form.lunch_recipes.push(attrId);
+          if (this.save_diary_form.lunch_recipes.indexOf(attrId) === -1) {
+            this.save_diary_form.lunch_recipes.push(attrId);
+          } else {
+            this.raiseError("Ви вже вибрали цей рецепт");
+            return;
+          }
           break;
         }
         case "dinner":{
-          this.save_diary_form.dinner_recipes.push(attrId);
+          if (this.save_diary_form.dinner_recipes.indexOf(attrId) === -1) {
+            this.save_diary_form.dinner_recipes.push(attrId);
+          } else {
+            this.raiseError("Ви вже вибрали цей рецепт");
+            return;
+          }
           break;
         }
         case "supper":{
-          this.save_diary_form.supper_recipes.push(attrId);
+          if (this.save_diary_form.supper_recipes.indexOf(attrId) === -1) {
+            this.save_diary_form.supper_recipes.push(attrId);
+          } else {
+            this.raiseError("Ви вже вибрали цей рецепт");
+            return;
+          }
           break;
         }
       }
@@ -91,7 +112,7 @@ export class DashboardComponent implements OnInit {
       deleteButton.classList.add('fa', 'fa-minus-circle', 'delete-btn');
       deleteButton.setAttribute('data-recipe-id', attrId);
       deleteButton.setAttribute('data-recipe-type', type);
-   
+
       deleteButton.addEventListener('click', this.onDeleteRecipe.bind(this))
 
       formGroup.insertAdjacentElement('beforeend', deleteButton)
@@ -124,6 +145,10 @@ export class DashboardComponent implements OnInit {
       }
     }
     clickedButton.parentElement.remove()
+  }
+
+  raiseError(errorMessage){
+    console.log(errorMessage)
   }
 
   // Save Diary

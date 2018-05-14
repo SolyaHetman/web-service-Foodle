@@ -5,6 +5,7 @@ import { AfterViewInit, ElementRef, Renderer } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormsModule  } from '@angular/forms';
 import { Title } from "@angular/platform-browser";
 import { Router } from '@angular/router';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 
 import { Recipe } from '../../models/recipe';
 import { Diary } from '../../models/diary';
@@ -41,6 +42,7 @@ export class DashboardComponent implements OnInit {
     private _getRecipe: GetRecipesService,
     private _elRef: ElementRef,
     private _titleService: Title,
+    private _sanitizer: DomSanitizer,
     public elref: ElementRef, 
     public router: Router,
     public renderer: Renderer,
@@ -166,5 +168,8 @@ export class DashboardComponent implements OnInit {
         this.router.navigate(['/diary']);
       }
     );
+  }
+  getBackground(image) {
+    return this._sanitizer.bypassSecurityTrustStyle(`linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(http://188.166.100.169:8080${image})`);
   }
 }

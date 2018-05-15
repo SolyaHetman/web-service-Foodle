@@ -30,7 +30,7 @@ export class TokenService {
     const token =this.get();
     if(token) {
       const payload = this.payload(token);
-      // console.log(payload.email);
+      // console.log(payload.email);  
       if(payload) {
         return true;
       }

@@ -1,5 +1,5 @@
 <!-- START CONTENT -->
-<div class="diaries" *ngFor="let diary of diarys; let first=first">
+<!-- <div class="diaries" *ngFor="let diary of diarys; let first=first">
     <h2>
         "Diary:" {{ diary.name }}
     </h2>
@@ -7,17 +7,12 @@
         {{ recipe.name }}, {{ recipe.id }}
     </div>
     <hr>
-    
-</div>
 
+</div> -->
 
+<navbar></navbar>
 <div class="container-fluid main-content">
-    <ul *ngFor="let i of diarys">
-        <p>Diary length: {{diarys.testf}}</p>
-        <!-- <li *ngFor="let data of i.morning">{{ data.name }} {{ data.description }} {{ data.length }}</li> -->
-        <!-- <li *ngFor="let lunch of i.lunch">{{ lunch.name }} {{ lunch.description }}</li> -->
 
-    </ul>
     <div class="row">
         <div class="col-12 col-md-12">
             <div class="row travneve">
@@ -28,20 +23,21 @@
                     <div class="lineunder"></div>
                 </div>
             </div>
+
             <div id="carouselExampleControls" class="carousel slide row" data-interval="7000" data-ride="carousel">
                 <div class="carousel-inner">
-                    <ng-container *ngFor="let data of diarys; let first=first; let i=index">
-                        <div class="carousel-item active" *ngIf="i % 4 === 0" [ngClass]="{active: first}">
+                    <ng-container *ngFor="let diary of diarys; let first=first; let i=index">
+
+                        <div class="carousel-item active" *ngIf="i % 3 === 0" [ngClass]="{active: first}">
                             <div class="d-block w-100" alt="First slide">
                                 <div class="row scale-allow">
-                                    <!-- <div class="col sportmenu-images margin-sportmenu" *ngFor="let diary of data.morning|slice:i:i+4"> -->
-                                    <div class="col sportmenu-images margin-sportmenu" *ngFor="let diary of diarys|slice:i:i+4">
+                                    <div class="col sportmenu-images margin-sportmenu" *ngFor="let recipe of getAllRecipesFromDiary(diary)|slice:i:i+3">
                                         <div class="row sportmenu-insider">
                                             <div class="col-6 mh-100 left-col-sportmenu">
                                                 <div class="container-fluid">
                                                     <div class="row">
                                                         <div class="col-12 salat-na-snidanok">
-                                                            <h5 class="recipe-name" *ngFor="let i of diary.morning">{{ i.name }}</h5>
+                                                            <h5 class="recipe-name"> {{ recipe.name }}</h5>
                                                         </div>
                                                         <div class="col-12 sportmenu-otstup"></div>
                                                         <div class="col-12 mt-auto"><i class="far fa-clock"></i></div>
@@ -54,7 +50,7 @@
                                                         <div><span class="font-weight-bold">Інградієнти:</span><br>
                                                             <div class="eggs">
                                                                 <ul class="list-unstyled">
-                                                                    <li *ngFor="let used_ingredients of diary.used_ingredients">Інгредієнт: {{ used_ingredients.ingredient.name }}, Вага: {{ used_ingredients.weight }}</li>
+                                                                    <li *ngFor="let used_ingredients of recipe.used_ingredients">{{ used_ingredients.ingredient.name }}, {{ used_ingredients.weight }}г</li>
                                                                 </ul>
                                                             </div>
                                                         </div>
@@ -63,7 +59,7 @@
                                                     <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle add-to-diary" aria-hidden="true"></i></div>
                                                     <div class="col-12 sportmenu-otstup-stars"></div>
                                                     <div class="col-12 sportmenu-preparing">
-                                                        <p><span class="font-weight-bold">Приготування:</span><br>{{ diary.description }}...</p>
+                                                        <p><span class="font-weight-bold">Приготування:</span><br>{{ recipe.description }}...</p>
                                                     </div>
                                                     <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>

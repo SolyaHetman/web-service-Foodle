@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class GetAllergiesService {
+  
   private _url: string = 'http://188.166.100.169:8080/api/v1/allergies/';
   constructor(
     private http: HttpClient

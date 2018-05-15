@@ -493,3 +493,7 @@ body {
 .carousel-control-next .carousel-control-next-icon:hover {
     opacity: 1 !important;
 }
+
+.eggs ul li {
+    font-size: 10px;
+}

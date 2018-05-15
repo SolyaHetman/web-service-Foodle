@@ -1,14 +1,16 @@
 import { SigninComponent } from './components/signin/signin.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router'
 import { DiaryComponent } from './components/diary/diary.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 
 const routes: Routes = [
+	{ path: '', component: LandingComponent },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'signup', component: SignupComponent },
     { path: 'signin', component: SigninComponent },
@@ -37,4 +39,4 @@ export class AppRoutingModule {
 
 }
 
-export const routingComponents = [DashboardComponent, SignupComponent, SigninComponent]
+export const routingComponents = [DashboardComponent, SignupComponent, SigninComponent, LandingComponent]

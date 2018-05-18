@@ -179,6 +179,6 @@ export class DashboardComponent implements OnInit {
   handleRespone(data) {
     // this.token.handle(data.token);
     // this.router.navigate(['/diary']);
-    this.flashMessagesService.show(`Меню добавлено`, { cssClass: 'alert-success', timeout: 3000 });
+    this.flashMessagesService.show(`Нове меню збережено`, { cssClass: 'alert-success', timeout: 3000 });
   }
 }

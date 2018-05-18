@@ -13,21 +13,20 @@
 <navbar></navbar>
 <div class="container-fluid main-content">
 
-    <div class="row">
+    <div class="row" *ngFor="let diary of diarys; let first=first">
         <div class="col-12 col-md-12">
             <div class="row travneve">
-                <div class="col-8" *ngFor="let diary of diarys">{{ diary.name }}
+                <div class="col-8">{{ diary.name }}
                     <div class="lineunder"></div>
                 </div>
-                <div class="col-3 snidanok-time" *ngFor="let diary of diarys">Збережено {{ diary.date_from }}
+                <div class="col-3 snidanok-time">Збережено {{ diary.date_from }}
                     <div class="lineunder"></div>
                 </div>
             </div>
 
             <div id="carouselExampleControls" class="carousel slide row" data-interval="7000" data-ride="carousel">
                 <div class="carousel-inner">
-                    <ng-container *ngFor="let diary of diarys; let first=first; let i=index">
-
+                    <ng-container *ngFor="let diary2 of diarys; let first=first; let i=index">
                         <div class="carousel-item active" *ngIf="i % 3 === 0" [ngClass]="{active: first}">
                             <div class="d-block w-100" alt="First slide">
                                 <div class="row scale-allow">

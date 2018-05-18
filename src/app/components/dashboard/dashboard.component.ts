@@ -11,6 +11,7 @@ import { Diary } from '../../models/diary';
 import { GetRecipesService } from '../../services/get-recipes.service';
 import { MorgningRecipes } from './../../models/morning-recipes';
 import { SaveDiaryService } from '../../services/save-diary.service';
+import { TokenService } from '../../services/token.service';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class DashboardComponent implements OnInit {
     'lunch_recipes': [],
     'dinner_recipes': [],
     'supper_recipes': [],
-  }
+  };
+  // public token;
 
   private url: string = 'http://188.166.100.169:8080/api/v1/diaries/create/';
 
@@ -41,16 +43,17 @@ export class DashboardComponent implements OnInit {
     private _getRecipe: GetRecipesService,
     private _elRef: ElementRef,
     private _titleService: Title,
+    private token: TokenService,
     public elref: ElementRef, 
     public router: Router,
     public renderer: Renderer,
-    public saveDiaryService: SaveDiaryService
+    public saveDiaryService: SaveDiaryService,
+    public flashMessagesService: FlashMessagesService,
   ) { }
 
   ngOnInit() {
 
     this._titleService.setTitle('Dashboard');
-
     this._getRecipe.getRecipes()
       .subscribe(
         data => this.recipes = data
@@ -74,7 +77,8 @@ export class DashboardComponent implements OnInit {
           if (this.save_diary_form.morning_recipes.indexOf(attrId) === -1) {
             this.save_diary_form.morning_recipes.push(attrId);
           } else {
-            this.raiseError("Ви вже вибрали цей рецепт");
+            this.flashMessagesService.show(`Ви вже вибрали цей рецепт`, { cssClass: 'alert-danger', timeout: 3000 });
+            // this.raiseError("Ви вже вибрали цей рецепт");
             return;
           }
           break;
@@ -83,7 +87,7 @@ export class DashboardComponent implements OnInit {
           if (this.save_diary_form.lunch_recipes.indexOf(attrId) === -1) {
             this.save_diary_form.lunch_recipes.push(attrId);
           } else {
-            this.raiseError("Ви вже вибрали цей рецепт");
+            this.flashMessagesService.show(`Ви вже вибрали цей рецепт`, { cssClass: 'alert-danger', timeout: 3000 });
             return;
           }
           break;
@@ -92,7 +96,7 @@ export class DashboardComponent implements OnInit {
           if (this.save_diary_form.dinner_recipes.indexOf(attrId) === -1) {
             this.save_diary_form.dinner_recipes.push(attrId);
           } else {
-            this.raiseError("Ви вже вибрали цей рецепт");
+            this.flashMessagesService.show(`Ви вже вибрали цей рецепт`, { cssClass: 'alert-danger', timeout: 3000 });
             return;
           }
           break;
@@ -101,7 +105,7 @@ export class DashboardComponent implements OnInit {
           if (this.save_diary_form.supper_recipes.indexOf(attrId) === -1) {
             this.save_diary_form.supper_recipes.push(attrId);
           } else {
-            this.raiseError("Ви вже вибрали цей рецепт");
+            this.flashMessagesService.show(`Ви вже вибрали цей рецепт`, { cssClass: 'alert-danger', timeout: 3000 });
             return;
           }
           break;
@@ -159,12 +163,22 @@ export class DashboardComponent implements OnInit {
   }
 
   // Save Diary
-  saveDiary(e) {
-    this.http.post(this.url, this.save_diary_form).subscribe(
-      data => function (data) {
-        this.token.handle(data.token);
-        this.router.navigate(['/diary']);
-      }
-    );
+  saveDiary(event) {
+    this.saveDiaryService.saveNewDiary(this.save_diary_form).subscribe(
+      data => this.handleRespone(data)
+    )
+    // return this.http.post(this.url, this.save_diary_form).subscribe(
+    //   data => handleRespone(data)
+    //     // this.token.handle(data.token);
+    //     // this.router.navigate(['/diary']);
+    //     // this.flashMessagesService.show(`Diary has been created`, { cssClass: 'alert-success', timeout: 3000 });
+    //   // }
+    // );
+  }
+
+  handleRespone(data) {
+    // this.token.handle(data.token);
+    // this.router.navigate(['/diary']);
+    this.flashMessagesService.show(`Меню добавлено`, { cssClass: 'alert-success', timeout: 3000 });
   }
 }

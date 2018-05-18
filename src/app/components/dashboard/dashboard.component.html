@@ -41,7 +41,7 @@
     <div class="row">
         <div class="col-12 col-md-2 first-sidebar">
             <div class="choosed-dishes">
-                <div class="bigletters">Мої збереження:</div>
+                <div class="bigletters">Нове меню:</div>
                 <div class="lineunder"></div>
             </div>
 
@@ -49,7 +49,7 @@
                 <!-- Create Diary Form -->
                 <form class="pt-3" (ngSubmit)='saveDiary($event)' id="create-diary-form">
                     <div class="form-group">
-                        <input class="form-control" type="text" [(ngModel)]="save_diary_form.name" value="Some static name" placeholder="Назва збереження" name="name">
+                        <input class="form-control" type="text" [(ngModel)]="save_diary_form.name" value="Some static name" placeholder="Назва меню" name="name">
                     </div>
                     <div class="form-group">
                         <input class="form-control" type="date" name="date_from" [(ngModel)]="save_diary_form.date_from">
@@ -69,6 +69,8 @@
                     <h1 id="choose-title">Обрані страви: </h1>
                     <br>
                     <button type="submit" class="btn btn-outline-dark register-button d-block mx-auto" id="save-btn">Зберегти меню</button>
+                    <br>
+                    <flash-messages></flash-messages>
                 </form>
             </div>
         </div>
@@ -98,6 +100,7 @@
                                                     <div class="row">
                                                         <div class="col-12 salat-na-snidanok">
                                                             <h5 class="recipe-name">{{ recipe.name }}</h5>
+                                                            <img src="http://188.166.100.169:8080{{recipe.photo}}" alt="">
                                                         </div>
                                                         <div class="col-12 sportmenu-otstup"></div>
                                                         <div class="col-12 mt-auto"><i class="far fa-clock"></i>{{ recipe.cook_time }}</div>
@@ -111,6 +114,7 @@
                                                             <div class="eggs">
                                                                 <ul class="list-unstyled">
                                                                     <li *ngFor="let used_ingredients of recipe.used_ingredients">{{ used_ingredients.ingredient.name }},{{ used_ingredients.weight }}г</li>
+
                                                                 </ul>
                                                                 <!-- Рецепт{{ used_ingredients.recipe }} -->
                                                             </div>

@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, Renderer,  ViewChild } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AfterViewInit, ElementRef, Renderer } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormsModule  } from '@angular/forms';
 import { Title } from "@angular/platform-browser";
 import { Router } from '@angular/router';
-
 import { Recipe } from '../../models/recipe';
 import { Diary } from '../../models/diary';
 import { GetRecipesService } from '../../services/get-recipes.service';
@@ -13,14 +11,15 @@ import { MorgningRecipes } from './../../models/morning-recipes';
 import { SaveDiaryService } from '../../services/save-diary.service';
 import { TokenService } from '../../services/token.service';
 
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
   providers:[GetRecipesService, SaveDiaryService]
 })
+
 export class DashboardComponent implements OnInit {
+  @ViewChild("modals") addToModals: ElementRef; 
   public recipes = [];
   save_diary_form = {
     'name': '',
@@ -41,10 +40,9 @@ export class DashboardComponent implements OnInit {
     private http: HttpClient,
     private frmBuilder: FormBuilder, 
     private _getRecipe: GetRecipesService,
-    private _elRef: ElementRef,
+    private elementRef: ElementRef,
     private _titleService: Title,
     private token: TokenService,
-    public elref: ElementRef, 
     public router: Router,
     public renderer: Renderer,
     public saveDiaryService: SaveDiaryService,
@@ -52,7 +50,6 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-
     this._titleService.setTitle('Dashboard');
     this._getRecipe.getRecipes()
       .subscribe(
@@ -181,5 +178,23 @@ export class DashboardComponent implements OnInit {
     // this.token.handle(data.token);
     // this.router.navigate(['/diary']);
     this.flashMessagesService.show(`Нове меню збережено`, { cssClass: 'alert-success', timeout: 3000 });
+  }
+ 
+  // Add text to modal
+  addTextToModal(event: any) {
+    const btnAdd = document.querySelectorAll('.addToModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalRecipe');
+
+    Array.from(btnAdd).forEach(element => {
+      element.addEventListener('click', function () {
+        const attrTitle =  element.getAttribute('data-title');
+        const attrText = element.getAttribute('data-description');
+        console.log('Works...');
+        modalTitle.innerText = attrTitle;
+        modalText.innerText = attrText; 
+      });
+    });
+   
   }
 }

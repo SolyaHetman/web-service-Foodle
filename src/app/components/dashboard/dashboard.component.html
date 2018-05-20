@@ -123,15 +123,17 @@
                                                     <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle add-to-diary" aria-hidden="true" (click)="onSelectRecipe($event, 'morning')" attr.data-name="{{ recipe.name }}" attr.data-id="{{ recipe.id }}"></i></div>
                                                     <div class="col-12 sportmenu-otstup-stars"></div>
                                                     <div class="col-12 sportmenu-preparing">
-                                                        <p><span class="font-weight-bold">Приготування:</span><br>{{ recipe.description }}...</p>
+                                                        <p><span class="font-weight-bold">Приготування:</span><br>{{ recipe.description }}
+                                                            <a class="addToModal" href="#" data-toggle="modal" data-target="#textModal" attr.data-title="{{ recipe.name }}" attr.data-description="{{ recipe.description }}" (click)="addTextToModal($event)">[...]</a></p>
                                                     </div>
                                                     <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <!-- Start Modal -->
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -381,3 +383,21 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="textModal" tabindex="-1" role="dialog" aria-labelledby="textModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="modalRecipe"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->

@@ -5,6 +5,7 @@ import { User } from './user';
 import { Supper } from './supper';
 
 export class Diary {
+    id:string;
     name: string;
     date_from: string;
     date_to: string;

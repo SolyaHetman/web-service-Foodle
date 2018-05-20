@@ -99,13 +99,15 @@ body {
     text-transform: uppercase;
 }
 
-.strilka-right {
-    margin-right: 100px;
-}
 
-.strilka-left {
+/* .strilka-right {
+    margin-right: 100px;
+} */
+
+
+/* .strilka-left {
     margin-left: -80px;
-}
+} */
 
 .strilka-right-last {
     margin-right: 120px !important;
@@ -156,12 +158,14 @@ body {
 
 .red-rect {
     box-shadow: -100px -20px 200px 10px white;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     position: absolute;
     background: #F73C52;
-    margin-left: -80px;
+    /* margin-left: -80px; */
     width: 100px;
-    height: 100px;
+    height: 100%;
+    top: 0;
+    right: -100px;
     z-index: 1;
 }
 
@@ -178,9 +182,9 @@ body {
 }
 
 .scale-allow {
-    padding-top: 30px;
+    /* padding-top: 30px;
     padding-bottom: 30px;
-    margin-left: 5px;
+    margin-left: 5px; */
 }
 
 .carrot-block {
@@ -234,11 +238,11 @@ body {
 }
 
 .travneve {
-    margin-top: 25px;
-    margin-left: -15px !important;
-    margin-bottom: -10px;
+    /* margin-top: 25px; */
+    /* margin-left: -15px !important; */
+    /* margin-bottom: -10px; */
     font-size: 22px;
-    margin-left: -19px;
+    /* margin-left: -19px; */
 }
 
 .na-lito {

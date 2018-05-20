@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpModule} from "@angular/http";
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { CustomHttpInterceptor } from './http-interceptor';
@@ -32,7 +33,8 @@ import { LandingComponent } from './components/landing/landing.component';
     FormsModule,
     HttpClientModule,
     FlashMessagesModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    HttpModule
   ],
   providers: [
     {

@@ -165,7 +165,8 @@ export class DashboardComponent implements OnInit {
   // Save Diary
   saveDiary(event) {
     this.saveDiaryService.saveNewDiary(this.save_diary_form).subscribe(
-      data => this.handleRespone(data)
+      data => this.handleRespone(data),
+      error => {console.log(error.json())}
     )
     // return this.http.post(this.url, this.save_diary_form).subscribe(
     //   data => handleRespone(data)

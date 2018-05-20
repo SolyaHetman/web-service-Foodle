@@ -15,8 +15,8 @@ import { GetDiaryService } from '../../services/get-diary.service';
 })
 export class DiaryComponent implements OnInit {
   public diarys = [];
+  id: string;
 
- 
   constructor(
     private http: HttpClient,
     private frmBuilder: FormBuilder, 
@@ -33,21 +33,17 @@ export class DiaryComponent implements OnInit {
     this._getDiary.getDiarys()
       .subscribe(
         data => (this.diarys = data)
-        // data => {
-        //   console.log(this.diarys = this.diarys.concat(data))
-        // }
       );
   }
 
   getAllRecipesFromDiary(diary) {
     return [].concat(diary['morning']).concat(diary["lunch"]).concat(diary["dinner"]).concat(diary["supper"])
   }
-  myFunction(){
 
-    alert('Hello');
-
-    // return testf;
-
-  } 
-
+  // Delete
+  onDeleteDiary() {
+    this._getDiary.deleteDiary(this.id).subscribe((response) =>{
+      console.log('Deleted....')
+    });
+  }
 }

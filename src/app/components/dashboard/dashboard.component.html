@@ -75,7 +75,7 @@
             </div>
         </div>
 
-        <div class="col-12 col-md-9 mx-auto">
+        <div class="col-12 col-md-9 mx-auto container-fluid">
             <!-- Morning -->
             <div class="row snidanok">
                 <div class="col-8">Сніданок
@@ -101,12 +101,11 @@
                                                         <div class="col-12 salat-na-snidanok">
                                                             <h5 class="recipe-name">{{ recipe.name }}</h5>
                                                         </div>
-                                                        <div class="col-12 sportmenu-otstup"></div>
                                                         <div class="col-12 mt-auto time-preparation"><i class="far fa-clock"></i>{{ recipe.cook_time }}</div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-5  ml-auto">
+                                            <div class="col-5 ml-auto">
                                                 <div class="row right-col-sportmenu">
                                                     <div class="col-7 sportmenu-ingridients">
                                                         <div><span class="font-weight-bold">Інградієнти:</span><br>
@@ -121,17 +120,17 @@
                                                     </div>
                                                     <!-- Add to Diary Event -->
                                                     <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle add-to-diary" aria-hidden="true" (click)="onSelectRecipe($event, 'morning')" attr.data-name="{{ recipe.name }}" attr.data-id="{{ recipe.id }}"></i></div>
-                                                    <div class="col-12 sportmenu-otstup-stars"></div>
                                                     <div class="col-12 sportmenu-preparing">
                                                         <p><span class="font-weight-bold">Приготування:</span><br>{{ recipe.description }}
                                                             <a class="addToModal" href="#" data-toggle="modal" data-target="#textModal" attr.data-title="{{ recipe.name }}" attr.data-description="{{ recipe.description }}" (click)="addTextToModal($event)">[...]</a></p>
                                                     </div>
-                                                    <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <div class="col-12 mt-auto sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- Start Modal -->
+                                        <<<<<<< HEAD <!-- Start Modal -->
+                                            ======= >>>>>>> f08600f2f484aec7893da665600c979160e88e74
                                     </div>
 
                                 </div>
@@ -178,7 +177,6 @@
                                                         <div class="col-12 salat-na-snidanok">
                                                             <h5 class="recipe-name">{{ recipe.name }}</h5>
                                                         </div>
-                                                        <div class="col-12 sportmenu-otstup"></div>
                                                         <div class="col-12 mt-auto time-preparation"><i class="far fa-clock"></i>{{ recipe.cook_time }}</div>
                                                     </div>
                                                 </div>
@@ -196,11 +194,10 @@
                                                     </div>
                                                     <!-- Add to Diary Event -->
                                                     <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle add-to-diary" aria-hidden="true" (click)="onSelectRecipe($event, 'lunch')" attr.data-name="{{ recipe.name }}" attr.data-id="{{ recipe.id }}"></i></div>
-                                                    <div class="col-12 sportmenu-otstup-stars"></div>
                                                     <div class="col-12 sportmenu-preparing">
                                                         <p><span class="font-weight-bold">Приготування:</span><br>{{ recipe.description }}...</p>
                                                     </div>
-                                                    <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <div class="col-12 mt-auto sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
                                                 </div>
                                             </div>
@@ -251,7 +248,6 @@
                                                         <div class="col-12 salat-na-snidanok">
                                                             <h5 class="recipe-name">{{ recipe.name }}</h5>
                                                         </div>
-                                                        <div class="col-12 sportmenu-otstup"></div>
                                                         <div class="col-12 mt-auto time-preparation"><i class="far fa-clock"></i>{{ recipe.cook_time }}</div>
                                                     </div>
                                                 </div>
@@ -269,11 +265,10 @@
                                                     </div>
                                                     <!-- Add to Diary Event -->
                                                     <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle add-to-diary" aria-hidden="true" (click)="onSelectRecipe($event, 'dinner')" attr.data-name="{{ recipe.name }}" attr.data-id="{{ recipe.id }}"></i></div>
-                                                    <div class="col-12 sportmenu-otstup-stars"></div>
                                                     <div class="col-12 sportmenu-preparing">
                                                         <p><span class="font-weight-bold">Приготування:</span><br>{{ recipe.description }}...</p>
                                                     </div>
-                                                    <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <div class="col-12 mt-auto sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
                                                 </div>
                                             </div>
@@ -324,7 +319,6 @@
                                                         <div class="col-12 salat-na-snidanok">
                                                             <h5 class="recipe-name">{{ recipe.name }}</h5>
                                                         </div>
-                                                        <div class="col-12 sportmenu-otstup"></div>
                                                         <div class="col-12 mt-auto time-preparation"><i class="far fa-clock"></i>{{ recipe.cook_time }}</div>
                                                     </div>
                                                 </div>
@@ -342,11 +336,10 @@
                                                     </div>
                                                     <!-- Add to Diary Event -->
                                                     <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle add-to-diary" aria-hidden="true" (click)="onSelectRecipe($event, 'supper')" attr.data-name="{{ recipe.name }}" attr.data-id="{{ recipe.id }}"></i></div>
-                                                    <div class="col-12 sportmenu-otstup-stars"></div>
                                                     <div class="col-12 sportmenu-preparing">
                                                         <p><span class="font-weight-bold">Приготування:</span><br>{{ recipe.description }}...</p>
                                                     </div>
-                                                    <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <div class="col-12 mt-auto sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
                                                 </div>
                                             </div>

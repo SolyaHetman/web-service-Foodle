@@ -221,160 +221,87 @@
 
             <!-- End lunch recepies -->
 
-
-            <<<<<<< HEAD <!-- Dinner -->
-                <div class="row snidanok">
-                    <div class="col-8">Обід
-                        <div class="lineunder"></div>
-                    </div>
-                    <div class="col-2 snidanok-time">14:00-16:30
-                        <div class="lineunder"></div>
-                    </div>
+            <!-- Supper -->
+            <div class="row snidanok">
+                <div class="col-8">Вечеря
+                    <div class="lineunder"></div>
                 </div>
+                <div class="col-2 snidanok-time">18:00-20:30
+                    <div class="lineunder"></div>
+                </div>
+            </div>
 
-                <div id="carousel-recipes-dinner" class="carousel slide row" data-interval="7000" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <ng-container *ngFor="let data of recipes.dinner; let first=first; let i=index">
-                            <div class="carousel-item active" *ngIf="i % 4 === 0" [ngClass]="{active: first}">
-                                <div class="d-block w-100" alt="First slide">
-                                    <div class="row scale-allow">
-                                        <div class="col sportmenu-images margin-sportmenu" *ngFor="let recipe of recipes.dinner|slice:i:i+4">
-                                            <div class="row sportmenu-insider">
-                                                <img class="sportmenu-bg" src="http://188.166.100.169:8080{{recipe.photo}}" alt="">
-                                                <div class="col-6 mh-100 left-col-sportmenu">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-12 salat-na-snidanok">
-                                                                <h5 class="recipe-name">{{ recipe.name }}</h5>
-                                                            </div>
-                                                            <div class="col-12 mt-auto time-preparation"><i class="far fa-clock"></i>{{ recipe.cook_time }}</div>
+            <div id="carousel-recipes-supper" class="carousel slide row" data-interval="7000" data-ride="carousel">
+                <div class="carousel-inner">
+                    <ng-container *ngFor="let data of recipes.supper; let first=first; let i=index">
+                        <div class="carousel-item active" *ngIf="i % 3 === 0" [ngClass]="{active: first}">
+                            <div class="d-block w-100" alt="First slide">
+                                <div class="row scale-allow">
+                                    <div class="col sportmenu-images margin-sportmenu" *ngFor="let recipe of recipes.supper|slice:i:i+3">
+                                        <div class="row sportmenu-insider">
+                                            <img class="sportmenu-bg" src="http://188.166.100.169:8080{{recipe.photo}}" alt="">
+                                            <div class="col-6 mh-100 left-col-sportmenu">
+                                                <div class="container-fluid">
+                                                    <div class="row">
+                                                        <div class="col-12 salat-na-snidanok">
+                                                            <h5 class="recipe-name">{{ recipe.name }}</h5>
                                                         </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-5  ml-auto">
-                                                    <div class="row right-col-sportmenu">
-                                                        <div class="col-7 sportmenu-ingridients">
-                                                            <div><span class="font-weight-bold">Інградієнти:</span><br>
-                                                                <div class="eggs">
-                                                                    <ul class="list-unstyled">
-                                                                        <li *ngFor="let used_ingredients of recipe.used_ingredients">{{ used_ingredients.ingredient.name }},{{ used_ingredients.weight }}г</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <!-- Add to Diary Event -->
-                                                        <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle add-to-diary" aria-hidden="true" (click)="onSelectRecipe($event, 'dinner')" attr.data-name="{{ recipe.name }}" attr.data-id="{{ recipe.id }}"></i></div>
-                                                        <div class="col-12 sportmenu-preparing">
-                                                            <p><span class="font-weight-bold">Приготування:</span><br>{{ recipe.description | truncate }}...
-                                                                <a class="addToModal" href="#" data-toggle="modal" data-target="#textModal" attr.data-title="{{ recipe.name }}" attr.data-description="{{ recipe.description }}" (click)="addTextToModal($event)">[...]</a>
-                                                            </p>
-                                                        </div>
-                                                        <div class="col-12 mt-auto sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
+                                                        <div class="col-12 mt-auto time-preparation"><i class="far fa-clock"></i>{{ recipe.cook_time }}</div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </ng-container>
-                    </div>
-
-                    <a class="carousel-control-prev strilka-left" href="#carousel-recipes-dinner" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next strilka-right" href="#carousel-recipes-dinner" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-
-                <!-- End dinner recepies -->
-
-                <!-- Supper -->
-                <div class="row snidanok">
-                    <div class="col-8">Вечеря
-                        <div class="lineunder"></div>
-                    </div>
-                    <div class="col-2 snidanok-time">18:00-20:30
-                        <div class="lineunder"></div>
-                    </div>
-                </div>
-
-                <div id="carousel-recipes-supper" class="carousel slide row" data-interval="7000" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <ng-container *ngFor="let data of recipes.supper; let first=first; let i=index">
-                            <div class="carousel-item active" *ngIf="i % 3 === 0" [ngClass]="{active: first}">
-                                <div class="d-block w-100" alt="First slide">
-                                    <div class="row scale-allow">
-                                        <div class="col sportmenu-images margin-sportmenu" *ngFor="let recipe of recipes.supper|slice:i:i+3">
-                                            <div class="row sportmenu-insider">
-                                                <img class="sportmenu-bg" src="http://188.166.100.169:8080{{recipe.photo}}" alt="">
-                                                <div class="col-6 mh-100 left-col-sportmenu">
-                                                    <div class="container-fluid">
-                                                        <div class="row">
-                                                            <div class="col-12 salat-na-snidanok">
-                                                                <h5 class="recipe-name">{{ recipe.name }}</h5>
-                                                            </div>
-                                                            <div class="col-12 mt-auto time-preparation"><i class="far fa-clock"></i>{{ recipe.cook_time }}</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-5  ml-auto">
-                                                    <div class="row right-col-sportmenu">
-                                                        <div class="col-7 sportmenu-ingridients">
-                                                            <div><span class="font-weight-bold">Інградієнти:</span><br>
-                                                                <div class="eggs">
-                                                                    <ul class="list-unstyled">
-                                                                        <li *ngFor="let used_ingredients of recipe.used_ingredients">{{ used_ingredients.ingredient.name }},{{ used_ingredients.weight }}г</li>
-                                                                    </ul>
-                                                                </div>
+                                            <div class="col-5  ml-auto">
+                                                <div class="row right-col-sportmenu">
+                                                    <div class="col-7 sportmenu-ingridients">
+                                                        <div><span class="font-weight-bold">Інградієнти:</span><br>
+                                                            <div class="eggs">
+                                                                <ul class="list-unstyled">
+                                                                    <li *ngFor="let used_ingredients of recipe.used_ingredients">{{ used_ingredients.ingredient.name }},{{ used_ingredients.weight }}г</li>
+                                                                </ul>
                                                             </div>
                                                         </div>
-                                                        <!-- Add to Diary Event -->
-                                                        <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle add-to-diary" aria-hidden="true" (click)="onSelectRecipe($event, 'supper')" attr.data-name="{{ recipe.name }}" attr.data-id="{{ recipe.id }}"></i></div>
-                                                        <div class="col-12 sportmenu-preparing">
-                                                            <p><span class="font-weight-bold">Приготування:</span><br>{{ recipe.description | truncate}}...
-                                                                <a class="addToModal" href="#" data-toggle="modal" data-target="#textModal" attr.data-title="{{ recipe.name }}" attr.data-description="{{ recipe.description }}" (click)="addTextToModal($event)">[...]</a></p>
-                                                        </div>
-                                                        <div class="col-12 mt-auto sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
                                                     </div>
+                                                    <!-- Add to Diary Event -->
+                                                    <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle add-to-diary" aria-hidden="true" (click)="onSelectRecipe($event, 'supper')" attr.data-name="{{ recipe.name }}" attr.data-id="{{ recipe.id }}"></i></div>
+                                                    <div class="col-12 sportmenu-preparing">
+                                                        <p><span class="font-weight-bold">Приготування:</span><br>{{ recipe.description | truncate}}...
+                                                            <a class="addToModal" href="#" data-toggle="modal" data-target="#textModal" attr.data-title="{{ recipe.name }}" attr.data-description="{{ recipe.description }}" (click)="addTextToModal($event)">[...]</a></p>
+                                                    </div>
+                                                    <div class="col-12 mt-auto sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
                                                 </div>
                                             </div>
-
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
-                        </ng-container>
-                    </div>
-
-                    <a class="carousel-control-prev strilka-left" href="#carousel-recipes-supper" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next strilka-right" href="#carousel-recipes-supper" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                        </div>
+                    </ng-container>
                 </div>
 
-                <!-- End supper recepies -->
+                <a class="carousel-control-prev strilka-left" href="#carousel-recipes-supper" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next strilka-right" href="#carousel-recipes-supper" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
 
-                <div class="row d-none">
-                    <div class="col sportmenu-images margin-sportmenu">
-                    </div>
-                    <div class="col sportmenu-images">
-                    </div>
-                    <div class="col sportmenu-images">
-                    </div>
-                    <div class="col-2 sportmenu-images last-sportmenu">
-                    </div>
+            <!-- End supper recepies -->
+
+            <div class="row d-none">
+                <div class="col sportmenu-images margin-sportmenu">
                 </div>
+                <div class="col sportmenu-images">
+                </div>
+                <div class="col sportmenu-images">
+                </div>
+                <div class="col-2 sportmenu-images last-sportmenu">
+                </div>
+            </div>
         </div>
     </div>
 

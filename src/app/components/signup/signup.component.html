@@ -8,17 +8,17 @@
 
                     <div class="form-group d-flex align-items-end justify-content-between">
                         <label class="mb-0" for="user-name">Ім'я:</label>
-                        <input type="text" class="form-control" id="user-name" formControlName='name' [(ngModel)]="register.first_name" placeholder="Jack">
+                        <input type="text" class="form-control" id="user-name" formControlName='first_name' [(ngModel)]="register.first_name" placeholder="Jack">
                     </div>
                     <!-- Name errors showcase -->
-                    <div *ngIf="name.invalid && (name.dirty || isSubmitted)" class="form-group text-danger">
-                        <p *ngIf="name.errors.required">
+                    <div *ngIf="first_name.invalid && (first_name.dirty || isSubmitted)" class="form-group text-danger">
+                        <p *ngIf="first_name.errors.required">
                             Name is required.
                         </p>
-                        <p *ngIf="name.errors.minlength">
+                        <p *ngIf="first_name.errors.minlength">
                             Name must be at least 4 characters long.
                         </p>
-                        <p *ngIf="name.errors.maxlength">
+                        <p *ngIf="first_name.errors.maxlength">
                             Name must not exceed 15 characters.
                         </p>
                     </div>

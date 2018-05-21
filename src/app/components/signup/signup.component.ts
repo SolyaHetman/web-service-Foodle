@@ -101,21 +101,21 @@ export class SignupComponent implements OnInit {
   }
 
   // Validation
-  get name() { return this.form.get('name'); }
-  get last_name() { return this.form.get('last_name'); }
-  get email() { return this.form.get('email'); }
-  get password() { return this.form.get('password'); }
-  get disease() { return this.form.get('disease'); }
-  get allergy() { return this.form.get('allergy'); }
-  get cuisine() { return this.form.get('cuisine'); }
+  get first_name() { return this.SignUpForm.get('first_name'); }
+  get last_name() { return this.SignUpForm.get('last_name'); }
+  get email() { return this.SignUpForm.get('email'); }
+  get password() { return this.SignUpForm.get('password'); }
+  get disease() { return this.SignUpForm.get('disease'); }
+  get allergy() { return this.SignUpForm.get('allergy'); }
+  get cuisine() { return this.SignUpForm.get('cuisine'); }
 
   // Validate
   save(){
     this.isSubmitted = true;
-    if(!this.form.valid) {
+    if(!this.SignUpForm.valid) {
       return;
     }
-    this.result = this.form.value;
+    this.result = this.SignUpForm.value;
   }
   
 }

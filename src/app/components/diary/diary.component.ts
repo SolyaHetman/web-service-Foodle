@@ -14,7 +14,7 @@ import { GetDiaryService } from '../../services/get-diary.service';
   providers:[GetDiaryService],
 })
 export class DiaryComponent implements OnInit {
-  public diarys = [];
+  public diaries = [];
   id: string;
 
   constructor(
@@ -32,7 +32,7 @@ export class DiaryComponent implements OnInit {
     this._titleService.setTitle('Diary');
     this._getDiary.getDiarys()
       .subscribe(
-        data => (this.diarys = data)
+        data => (this.diaries = data)
       );
   }
 

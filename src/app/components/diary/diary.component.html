@@ -13,8 +13,9 @@
 <navbar></navbar>
 <div class="container-fluid main-content">
 
-    <div class="row" *ngFor="let diary of diarys; let first=first">
+    <div class="row" *ngFor="let diary of diaries; let first=first">
         <div class="col-11 col-md-11">
+
             <div class="row travneve mt-5 mb-4">
                 <div class="col-8">{{ diary.name }}
                     <div class="lineunder"></div>
@@ -23,9 +24,10 @@
                     <div class="lineunder"></div>
                 </div>
             </div>
-            <div id="carouselExampleControls" class="carousel slide row" data-interval="false" data-ride="false">
+
+            <div id="carousel-recipes-morning" class="carousel slide row" data-interval="7000" data-ride="carousel">
                 <div class="carousel-inner">
-                    <ng-container *ngFor="let diary2 of diarys; let first=first; let i=index">
+                    <ng-container *ngFor="let data of getAllRecipesFromDiary(diary); let first=first; let i=index">
                         <div class="carousel-item active" *ngIf="i % 3 === 0" [ngClass]="{active: first}">
                             <div class="d-block w-100" alt="First slide">
                                 <div class="row scale-allow">
@@ -36,9 +38,9 @@
                                                 <div class="container-fluid">
                                                     <div class="row">
                                                         <div class="col-12 salat-na-snidanok">
-                                                            <h5 class="recipe-name"> {{ recipe.name }}</h5>
+                                                            <h5 class="recipe-name">{{ recipe.name }}</h5>
                                                         </div>
-                                                        <div class="col-12 mt-auto time-preparation"><i class="far fa-clock"> {{ recipe.cook_time }}</i></div>
+                                                        <div class="col-12 mt-auto time-preparation"><i class="far fa-clock"></i>{{ recipe.cook_time }}</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -48,15 +50,19 @@
                                                         <div><span class="font-weight-bold">Інградієнти:</span><br>
                                                             <div class="eggs">
                                                                 <ul class="list-unstyled">
-                                                                    <li *ngFor="let used_ingredients of recipe.used_ingredients">{{ used_ingredients.ingredient.name }}, {{ used_ingredients.weight }}г</li>
+                                                                    <li *ngFor="let used_ingredients of recipe.used_ingredients">{{ used_ingredients.ingredient.name }},{{ used_ingredients.weight }}г</li>
+
                                                                 </ul>
+                                                                <!-- Рецепт{{ used_ingredients.recipe }} -->
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <!-- Add to Diary Event -->
-                                                    <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle add-to-diary" aria-hidden="true"></i></div>
+                                                    <div class="col-1 ml-auto sportmenu-plus">
+                                                    </div>
                                                     <div class="col-12 sportmenu-preparing">
-                                                        <p><span class="font-weight-bold">Приготування:</span><br>{{ recipe.description }}<a data-toggle="modal" data-target="#textModal">[...]</a></p>
+                                                        <p><span class="font-weight-bold">Приготування:</span><br> {{ recipe.description | truncate }}
+                                                            <a class="addToModal" href="#" data-toggle="modal" data-target="#textModal" attr.data-title="{{ recipe.name }}" attr.data-description="{{ recipe.description }}" (click)="addTextToModal($event)">[...]</a></p>
                                                     </div>
                                                     <div class="col-12 mt-auto sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
@@ -64,22 +70,22 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                     </ng-container>
                 </div>
-                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon strilka-left" aria-hidden="true"></span>
+
+                <a class="carousel-control-prev strilka-left" href="#carousel-recipes-morning" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
                 </a>
-                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon strilka-right" aria-hidden="true"></span>
+                <a class="carousel-control-next strilka-right" href="#carousel-recipes-morning" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
                 </a>
-                <div class="row grblock-top">
-                    <div class="col-12 red-rect d-flex justify-content-center align-items-center"><i class="far fa-trash-alt fa-2x" (click)="onDeleteDiary(diary.id)"></i></div>
-                </div>
             </div>
+
         </div>
     </div>

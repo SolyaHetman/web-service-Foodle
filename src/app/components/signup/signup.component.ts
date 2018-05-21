@@ -27,9 +27,10 @@ export class SignupComponent implements OnInit {
   public cuisines = [];
   register;
 
-  form: FormGroup;
+  SignUpForm: FormGroup;
   isSubmitted: boolean = false;
   result: any = null;
+
   constructor(
     private frmBuilder: FormBuilder, 
     private userService: UserService,
@@ -43,13 +44,13 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     // Set title
-    this._titleService.setTitle('SignUp');
+    this._titleService.setTitle('Реєстрація');
 
     // Form Validation
-    this.form = this.frmBuilder.group({
-      name:["", [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],
-      last_name:["", [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],
+    this.SignUpForm = this.frmBuilder.group({
       email:["", [Validators.required, Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)]],
+      first_name:["", [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+      last_name:["", [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],
       password:["", [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
       disease:["", [Validators.required]],
       allergy:["", [Validators.required]],
@@ -100,21 +101,21 @@ export class SignupComponent implements OnInit {
   }
 
   // Validation
-  get name() { return this.form.get('name'); }
-  get last_name() { return this.form.get('last_name'); }
-  get email() { return this.form.get('email'); }
-  get password() { return this.form.get('password'); }
-  get disease() { return this.form.get('disease'); }
-  get allergy() { return this.form.get('allergy'); }
-  get cuisine() { return this.form.get('cuisine'); }
+  get first_name() { return this.SignUpForm.get('first_name'); }
+  get last_name() { return this.SignUpForm.get('last_name'); }
+  get email() { return this.SignUpForm.get('email'); }
+  get password() { return this.SignUpForm.get('password'); }
+  get disease() { return this.SignUpForm.get('disease'); }
+  get allergy() { return this.SignUpForm.get('allergy'); }
+  get cuisine() { return this.SignUpForm.get('cuisine'); }
 
   // Validate
   save(){
     this.isSubmitted = true;
-    if(!this.form.valid) {
+    if(!this.SignUpForm.valid) {
       return;
     }
-    this.result = this.form.value;
+    this.result = this.SignUpForm.value;
   }
   
 }

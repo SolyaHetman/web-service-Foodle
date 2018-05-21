@@ -2,6 +2,9 @@ import { Diary } from './../models/diary';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Http, Response, Headers, URLSearchParams, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class GetDiaryService {
@@ -20,7 +23,7 @@ export class GetDiaryService {
 
   // Delete Diary
   deleteDiary(id): Observable<Diary[]> {
-    return this.http.delete<[Diary]>(this._deleteUrl+this.id)
+    return this.http.delete<[Diary]>(this._deleteUrl + id)
   }
 
 }

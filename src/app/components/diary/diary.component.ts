@@ -41,9 +41,9 @@ export class DiaryComponent implements OnInit {
   }
 
   // Delete
-  onDeleteDiary() {
-    this._getDiary.deleteDiary(this.id).subscribe((response) =>{
-      console.log('Deleted....')
+  onDeleteDiary(id: string) {
+    this._getDiary.deleteDiary(id).subscribe((response) =>{
+  
     });
   }
 }

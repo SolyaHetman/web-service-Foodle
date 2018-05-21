@@ -18,6 +18,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DiaryComponent } from './components/diary/diary.component';
 import { LandingComponent } from './components/landing/landing.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LandingComponent } from './components/landing/landing.component';
     routingComponents,
     DiaryComponent,
     LandingComponent,
+    TruncatePipe,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { LandingComponent } from './components/landing/landing.component';
       multi: true
     },
     TokenService,
+    TruncatePipe
   ],
   bootstrap: [AppComponent]
 })

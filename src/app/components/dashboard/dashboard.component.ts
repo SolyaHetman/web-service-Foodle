@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, Renderer,  ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, Renderer,  ViewChild, Pipe } from '@angular/core';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators, FormsModule  } from '@angular/forms';
@@ -10,12 +10,13 @@ import { GetRecipesService } from '../../services/get-recipes.service';
 import { MorgningRecipes } from './../../models/morning-recipes';
 import { SaveDiaryService } from '../../services/save-diary.service';
 import { TokenService } from '../../services/token.service';
+import { TruncatePipe } from '../../pipes/truncate.pipe';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
-  providers:[GetRecipesService, SaveDiaryService]
+  providers:[GetRecipesService, SaveDiaryService, TruncatePipe]
 })
 
 export class DashboardComponent implements OnInit {
@@ -30,12 +31,9 @@ export class DashboardComponent implements OnInit {
     'dinner_recipes': [],
     'supper_recipes': [],
   };
-  // public token;
 
   private url: string = 'http://188.166.100.169:8080/api/v1/diaries/create/';
-
   form: FormGroup;
-
   constructor(
     private http: HttpClient,
     private frmBuilder: FormBuilder, 
@@ -48,7 +46,7 @@ export class DashboardComponent implements OnInit {
     public saveDiaryService: SaveDiaryService,
     public flashMessagesService: FlashMessagesService,
   ) { }
-
+ 
   ngOnInit() {
     this._titleService.setTitle('Dashboard');
     this._getRecipe.getRecipes()
@@ -56,7 +54,6 @@ export class DashboardComponent implements OnInit {
         data => this.recipes = data
       );
   }
- 
 
   // Add to Diary Item
   onSelectRecipe(event, type) {
@@ -75,7 +72,6 @@ export class DashboardComponent implements OnInit {
             this.save_diary_form.morning_recipes.push(attrId);
           } else {
             this.flashMessagesService.show(`Ви вже вибрали цей рецепт`, { cssClass: 'alert-danger', timeout: 3000 });
-            // this.raiseError("Ви вже вибрали цей рецепт");
             return;
           }
           break;
@@ -113,18 +109,13 @@ export class DashboardComponent implements OnInit {
       const deleteButton = document.createElement('i');
 
       formGroup.innerHTML += `${attrName}`
-
       // Div
       formGroup.classList.add('form-group', 'd-flex', 'align-items-center', 'justify-content-between');
-
       deleteButton.classList.add('fa', 'fa-minus-circle', 'delete-btn');
       deleteButton.setAttribute('data-recipe-id', attrId);
       deleteButton.setAttribute('data-recipe-type', type);
-
       deleteButton.addEventListener('click', this.onDeleteRecipe.bind(this))
-
       formGroup.insertAdjacentElement('beforeend', deleteButton)
-
       form.insertBefore(formGroup, saveBtn);
     }
   }
@@ -165,18 +156,9 @@ export class DashboardComponent implements OnInit {
       data => this.handleRespone(data),
       error => {console.log(error.json())}
     )
-    // return this.http.post(this.url, this.save_diary_form).subscribe(
-    //   data => handleRespone(data)
-    //     // this.token.handle(data.token);
-    //     // this.router.navigate(['/diary']);
-    //     // this.flashMessagesService.show(`Diary has been created`, { cssClass: 'alert-success', timeout: 3000 });
-    //   // }
-    // );
   }
 
   handleRespone(data) {
-    // this.token.handle(data.token);
-    // this.router.navigate(['/diary']);
     this.flashMessagesService.show(`Нове меню збережено`, { cssClass: 'alert-success', timeout: 3000 });
   }
  
@@ -190,11 +172,10 @@ export class DashboardComponent implements OnInit {
       element.addEventListener('click', function () {
         const attrTitle =  element.getAttribute('data-title');
         const attrText = element.getAttribute('data-description');
-        console.log('Works...');
         modalTitle.innerText = attrTitle;
         modalText.innerText = attrText; 
       });
     });
-   
   }
+  
 }

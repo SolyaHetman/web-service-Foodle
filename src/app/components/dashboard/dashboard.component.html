@@ -121,7 +121,7 @@
                                                     <!-- Add to Diary Event -->
                                                     <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle add-to-diary" aria-hidden="true" (click)="onSelectRecipe($event, 'morning')" attr.data-name="{{ recipe.name }}" attr.data-id="{{ recipe.id }}"></i></div>
                                                     <div class="col-12 sportmenu-preparing">
-                                                        <p><span class="font-weight-bold">Приготування:</span><br>{{ recipe.description }}
+                                                        <p><span class="font-weight-bold">Приготування:</span><br> {{ recipe.description | truncate }}
                                                             <a class="addToModal" href="#" data-toggle="modal" data-target="#textModal" attr.data-title="{{ recipe.name }}" attr.data-description="{{ recipe.description }}" (click)="addTextToModal($event)">[...]</a></p>
                                                     </div>
                                                     <div class="col-12 mt-auto sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>

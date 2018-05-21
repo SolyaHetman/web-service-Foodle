@@ -490,6 +490,10 @@ body {
     opacity: 1 !important;
 }
 
+.fa-trash-alt:hover {
+    cursor: pointer;
+}
+
 .carousel-control-next .carousel-control-next-icon {
     opacity: .5 !important;
 }

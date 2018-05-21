@@ -10,13 +10,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AuthGuardService {
 
   private _url = 'http://188.166.100.169:8080/api/v1/user/'
-  private hasUser = false;
 
   CurrentUserChange: Subject<User> = new Subject<User>();
   CurrentUser: User;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private tokenService: TokenService,
   ) {
       this.CurrentUserChange.subscribe(value => {
         this.CurrentUser = value;
@@ -25,7 +25,7 @@ export class AuthGuardService {
   }
 
   public getUser(): Observable<User> {
-    if (!this.hasUser) {
+    if (this.tokenService.loggedIn()) {
       this.fetchUser();
     }
     return this.CurrentUserChange.asObservable();
@@ -34,12 +34,9 @@ export class AuthGuardService {
   public fetchUser(): void {
     this.http.get<User>(this._url) // <== http call to fetch userInfo
       .subscribe(user => {
-        // user should contains roles has been granted
-        this.hasUser = true;
         this.CurrentUserChange.next(user);
         this.CurrentUserChange.complete();
       }, (error) => {
-        this.hasUser = false;
         this.CurrentUserChange.error(error);
       });
   }

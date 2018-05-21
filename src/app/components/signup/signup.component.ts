@@ -27,9 +27,10 @@ export class SignupComponent implements OnInit {
   public cuisines = [];
   register;
 
-  form: FormGroup;
+  SignUpForm: FormGroup;
   isSubmitted: boolean = false;
   result: any = null;
+
   constructor(
     private frmBuilder: FormBuilder, 
     private userService: UserService,
@@ -43,13 +44,13 @@ export class SignupComponent implements OnInit {
 
   ngOnInit() {
     // Set title
-    this._titleService.setTitle('SignUp');
+    this._titleService.setTitle('Реєстрація');
 
     // Form Validation
-    this.form = this.frmBuilder.group({
-      name:["", [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],
-      last_name:["", [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],
+    this.SignUpForm = this.frmBuilder.group({
       email:["", [Validators.required, Validators.pattern(/^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/)]],
+      first_name:["", [Validators.required, Validators.minLength(3), Validators.maxLength(15)]],
+      last_name:["", [Validators.required, Validators.minLength(3),Validators.maxLength(15)]],
       password:["", [Validators.required, Validators.minLength(6), Validators.maxLength(15)]],
       disease:["", [Validators.required]],
       allergy:["", [Validators.required]],

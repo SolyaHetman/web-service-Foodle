@@ -3,6 +3,7 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/c
 import { Observable } from 'rxjs/Rx';
 import { TokenService } from './services/token.service';
 import { AppRoutingModule } from './app-routing.module';
+import { Router } from '@angular/router';
 
 import 'rxjs/add/observable/throw'
 import 'rxjs/add/operator/catch';
@@ -13,15 +14,22 @@ export class CustomHttpInterceptor implements HttpInterceptor {
 
 	constructor(
 		private routing: AppRoutingModule,
+		private router: Router,
 		private tokenService: TokenService,
 	){}
 
 	intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
-		if (! (req.url.endsWith("/login/") || req.url.endsWith("/register/"))) {
+		let isLoginRegisterPage = this.router.url.includes("signin") || this.router.url.includes("signup")
+		console.log("isLoginRegisterPage", isLoginRegisterPage)
+		if (this.tokenService.loggedIn()) {
 			const Authorization = this.tokenService.get(); //read the token from storahe
 			req = req.clone({ headers: req.headers.set('Authorization', "Bearer " + Authorization) });
+			console.log("LoGED IN. REQUEST Authorization create")
+		} else if(!isLoginRegisterPage) {
+			console.log("redirect")
+			this.routing.signIn();
 		}
+
 		//send the newly created request
 		return next.handle(req)
 			.catch((error, caught) => {

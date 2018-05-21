@@ -27,10 +27,9 @@ export class TokenService {
   }
 
   isValid() { //token
-    const token =this.get();
+    const token = this.get();
     if(token) {
       const payload = this.payload(token);
-      // console.log(payload.email);  
       if(payload) {
         return true;
       }

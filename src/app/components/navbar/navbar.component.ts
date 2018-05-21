@@ -16,11 +16,16 @@ export class NavbarComponent implements OnInit {
 
   public currentUser: User;
 
-  constructor( private authGuard: AuthGuardService) {
-    this.authGuard.getUser();
-    this.authGuard.CurrentUserChange.subscribe(user => {
-      this.currentUser = user
-    })
+  constructor(
+    private authGuard: AuthGuardService,
+    private tokenService: TokenService,
+  ) {
+    if (tokenService.loggedIn()) {
+      this.authGuard.getUser();
+      this.authGuard.CurrentUserChange.subscribe(user => {
+        this.currentUser = user
+      })
+    }
   }
 
   ngOnInit(){

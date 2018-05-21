@@ -99,26 +99,6 @@ body {
     text-transform: uppercase;
 }
 
-
-/* .strilka-right {
-    margin-right: 100px;
-} */
-
-
-/* .strilka-left {
-    margin-left: -80px;
-} */
-
-.strilka-right-last {
-    margin-right: 120px !important;
-    margin-top: 45px;
-}
-
-.strilka-left-last {
-    margin-left: -80px;
-    margin-top: 45px;
-}
-
 .grblock-top {
     box-shadow: -100px 0px 200px -20px white;
     color: white;
@@ -158,12 +138,12 @@ body {
 
 .red-rect {
     box-shadow: -100px -20px 200px 10px white;
-    /* margin-top: 100px; */
+    margin-top: 30px;
     position: absolute;
     background: #F73C52;
     /* margin-left: -80px; */
     width: 100px;
-    height: 100%;
+    height: 200px;
     top: 0;
     right: -100px;
     z-index: 1;
@@ -182,9 +162,9 @@ body {
 }
 
 .scale-allow {
-    /* padding-top: 30px;
+    padding-top: 30px;
     padding-bottom: 30px;
-    margin-left: 5px; */
+    margin-left: 5px;
 }
 
 .carrot-block {
@@ -282,6 +262,8 @@ body {
 }
 
 .salat-na-snidanok {
+    position: relative;
+    z-index: 2;
     line-height: 20px;
     font-weight: 800;
     padding-right: 0px !important;
@@ -354,6 +336,9 @@ body {
 .right-col-sportmenu {
     padding-top: 10px;
     padding-right: 10px;
+    height: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .left-col-sportmenu .mt-auto {
@@ -364,10 +349,15 @@ body {
     font-size: 16px;
 }
 
+.sportmenu-bg {
+    height: 200px;
+    width: 400px;
+    position: absolute;
+}
+
 .sportmenu-images {
     height: 200px;
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(assets/img/sportmenu.jpg);
     color: white;
     overflow: hidden;
     -moz-transition: all 500ms ease-out;
@@ -398,25 +388,21 @@ body {
 }
 
 .sportmenu-images:hover .left-col-sportmenu {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(assets/img/sportmenu.jpg);
     color: white;
 }
 
 .sportmenu-images .last-sportmenu {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(assets/img/sportmenu.jpg);
     transform: scale(1);
 }
 
 .last-sportmenu:hover {
     position: relative;
     z-index: 3;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(assets/img/sportmenu.jpg);
 }
 
 .sportmenu-images-last {
     height: 200px;
     position: relative;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(assets/img/sportmenu.jpg);
     color: white;
     overflow: hidden;
 }
@@ -500,4 +486,53 @@ body {
 
 .eggs ul li {
     font-size: 10px;
+}
+
+.sportmenu-bg {
+    height: 180px;
+    width: 400px;
+    position: absolute;
+}
+
+.strilka-right, .strilka-left {
+    margin-top: -10px;
+}
+
+.time-preparation .fa-clock {
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.sportmenu-insider {
+    height: 180px;
+    font-size: 8px;
+    position: relative;
+}
+
+.sportmenu-insider:before {
+    display: block;
+    content: " ";
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.5;
+}
+
+.time-preparation {
+    margin-bottom: 10px !important;
+    position: relative;
+    z-index: 2;
+}
+
+.left-col-sportmenu .container-fluid {
+    height: 100%;
+}
+
+.left-col-sportmenu .container-fluid .row {
+    height: 100%;
 }

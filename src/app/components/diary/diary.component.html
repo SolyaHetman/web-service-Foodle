@@ -38,12 +38,11 @@
                                                         <div class="col-12 salat-na-snidanok">
                                                             <h5 class="recipe-name"> {{ recipe.name }}</h5>
                                                         </div>
-                                                        <div class="col-12 sportmenu-otstup"></div>
-                                                        <div class="col-12 mt-auto"><i class="far fa-clock"></i></div>
+                                                        <div class="col-12 mt-auto time-preparation"><i class="far fa-clock"> {{ recipe.cook_time }}</i></div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-5  ml-auto">
+                                            <div class="col-5 ml-auto">
                                                 <div class="row right-col-sportmenu">
                                                     <div class="col-7 sportmenu-ingridients">
                                                         <div><span class="font-weight-bold">Інградієнти:</span><br>
@@ -56,11 +55,10 @@
                                                     </div>
                                                     <!-- Add to Diary Event -->
                                                     <div class="col-1 ml-auto sportmenu-plus"><i class="fa fa-plus-circle add-to-diary" aria-hidden="true"></i></div>
-                                                    <div class="col-12 sportmenu-otstup-stars"></div>
                                                     <div class="col-12 sportmenu-preparing">
                                                         <p><span class="font-weight-bold">Приготування:</span><br>{{ recipe.description }}<a data-toggle="modal" data-target="#textModal">[...]</a></p>
                                                     </div>
-                                                    <div class="col-12 sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                                    <div class="col-12 mt-auto sportmenu-stars text-right"><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
                                                 </div>
                                             </div>
@@ -78,9 +76,6 @@
                 <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                     <span class="carousel-control-next-icon strilka-right" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
-                    <!-- <div class="row grblock-top">
-                        <div class="col-12 red-rect d-flex justify-content-center align-items-center"><i class="far fa-trash-alt fa-2x"></i></div>
-                    </div> -->
                 </a>
                 <div class="row grblock-top">
                     <div class="col-12 red-rect d-flex justify-content-center align-items-center"><i class="far fa-trash-alt fa-2x" (click)="onDeleteDiary()"></i></div>

@@ -12,10 +12,8 @@
 
 <navbar></navbar>
 <div class="container-fluid main-content">
-
     <div class="row" *ngFor="let diary of diaries; let first=first">
-        <div class="col-11 col-md-11">
-
+        <div class="col-11 col-md-11 mx-auto">
             <div class="row travneve mt-5 mb-4">
                 <div class="col-8">{{ diary.name }}
                     <div class="lineunder"></div>
@@ -24,7 +22,6 @@
                     <div class="lineunder"></div>
                 </div>
             </div>
-
             <div id="carousel-recipes-morning" class="carousel slide row" data-interval="7000" data-ride="carousel">
                 <div class="carousel-inner">
                     <ng-container *ngFor="let data of getAllRecipesFromDiary(diary); let first=first; let i=index">
@@ -58,8 +55,7 @@
                                                         </div>
                                                     </div>
                                                     <!-- Add to Diary Event -->
-                                                    <div class="col-1 ml-auto sportmenu-plus">
-                                                    </div>
+                                                    <div class="col-1 ml-auto sportmenu-plus"></div>
                                                     <div class="col-12 sportmenu-preparing">
                                                         <p><span class="font-weight-bold">Приготування:</span><br> {{ recipe.description | truncate }}
                                                             <a class="addToModal" href="#" data-toggle="modal" data-target="#textModal" attr.data-title="{{ recipe.name }}" attr.data-description="{{ recipe.description }}" (click)="addTextToModal($event)">[...]</a></p>
@@ -84,6 +80,9 @@
                 <a class="carousel-control-next strilka-right" href="#carousel-recipes-morning" role="button" data-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="sr-only">Next</span>
+                    <div class="row grblock">
+                        <div class="col-12 red-rect d-flex justify-content-center align-items-center"><i class="far fa-trash-alt fa-2x"></i></div>
+                    </div>
                 </a>
             </div>
 

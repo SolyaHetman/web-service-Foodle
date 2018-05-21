@@ -102,10 +102,11 @@ body {
 .strilka-right {
     height: 20%;
     margin-top: 95px;
-    margin-right: -15px;
+    margin-right: 60px;
 }
 
 .scale-allow {
+    width: 90%;
     padding-top: 30px;
     padding-bottom: 30px;
     padding-right: 20px;
@@ -482,3 +483,40 @@ form input.form-control:focus {
 .left-col-sportmenu .container-fluid .row {
     height: 100%;
 }
+
+.sportmenu-bg {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.carousel-control-next-icon {
+    margin-right: 110px;
+    opacity: 1 !important; 
+}
+.carousel-control-next {
+    opacity: 1 !important; 
+}
+.carousel-control-next .carousel-control-next-icon:hover {
+    opacity: 1 !important; 
+}
+
+.grblock {
+    box-shadow: -100px 0px 200px -20px white;
+    color: white;
+    padding-left: 0;
+    margin-top: -170px !important;
+    margin-left: -10px;
+}
+
+.red-rect {
+    box-shadow: -100px -20px 200px 10px white;
+    margin-top: -4px;
+    position: absolute;
+    background: #F73C52;
+    margin-left: -70px;
+    width: 100px;
+    height: 180px;
+    z-index: 1; 
+}
+  

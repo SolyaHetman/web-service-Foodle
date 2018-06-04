@@ -1,5 +1,13 @@
 # FoodleApp
 
+## Local
+
+1. Install `npm`
+1. Install angular cli
+1. Install dependencies `npm install`
+1. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
 ## Development server
